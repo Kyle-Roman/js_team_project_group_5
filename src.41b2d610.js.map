@@ -1,0 +1,1 @@
+{"version":3,"sources":["index.js"],"names":["console","log"],"mappings":";;;AAEA,aAFA,QAAA,oBAEAA,QAAQC,IAAI","file":"src.41b2d610.js","sourceRoot":"../src","sourcesContent":["import './sass/main.scss';\n\nconsole.log('Первый мердж тест');\n"]}
