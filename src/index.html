@@ -1,22 +1,34 @@
 <!DOCTYPE html>
 <html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Filmoteka</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.0.0/modern-normalize.min.css"
+      integrity="sha512-ISS7cAi1PEhQ8jnbJpJZMd29NlhNj4AWYyLOSp2CE/CsHxTCu+r+t0D2yoJudVrd0/8fTVPUVDzY5Tvli75u/g=="
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./sass/main.scss" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Filmoteka</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.0.0/modern-normalize.min.css"
-    integrity="sha512-ISS7cAi1PEhQ8jnbJpJZMd29NlhNj4AWYyLOSp2CE/CsHxTCu+r+t0D2yoJudVrd0/8fTVPUVDzY5Tvli75u/g=="
-    crossorigin="anonymous" />
-  <link rel="stylesheet" href="./sass/main.scss">
-</head>
+  <body>
+    <p>bla bla bla</p>
 
-<body>
+    <!-- ===========movie modal window =========-->
+    <button id="btn_modal_window">future card</button>
+    <div class="modal" id="myModal">
+      <div class="modal_content">
+        <img class="modal_img" src="" alt="" />
+        <p>test modal</p>
+        <button type="button" class="close_modal_window"></button>
+      </div>
+    </div>
+    <!-- ===========end of modal window =========-->
 
-  <p>bla bla bla</p>
-
-  <script src="./index.js"></script>
-</body>
-
+    <script src="./js/movie-modal.js" type="module"></script>
+    <script src="./index.js"></script>
+  </body>
 </html>
