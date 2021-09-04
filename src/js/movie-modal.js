@@ -1,5 +1,5 @@
-import functionName from './apiService';
-import templateName from '../hbs/modal.hbs';
+import functionName from './api-service';
+// import templateName from '../hbs/modal.hbs';
 
 const modal = document.getElementById('myModal');
 const btn = document.getElementById('btn_modal_window');
