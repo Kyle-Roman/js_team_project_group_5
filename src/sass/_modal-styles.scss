@@ -1,8 +1,8 @@
 .modal {
   display: none;
+  position: fixed;
   justify-content: center;
   align-items: center;
-  position: absolute;
   z-index: 1000;
   left: 0;
   top: 0;
