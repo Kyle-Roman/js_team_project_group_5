@@ -1,18 +1,19 @@
 //BASE
 // reset-styles
-@import "./base/reset-styles";
+@import './base/reset-styles';
 
 //UTILS
 // variables
-@import "./utils/variables";
+@import './utils/variables';
 // visually-hidden
-@import "./utils/visually-hidden";
+@import './utils/visually-hidden';
 
 //COMPONENTS
 
 // container
-@import "./components/container";
+@import './components/container';
 //body
-@import "./components/body";
+@import './components/body';
 //container
-@import "./components/container";
+@import './components/container';
+@import './components/pagination ';
