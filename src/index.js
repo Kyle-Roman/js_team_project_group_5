@@ -1,1 +1,4 @@
-import './js/search'
+import './js/search';
+import './sass/main.scss';
+import './js/refs';
+import './js/team-modal';
