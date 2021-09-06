@@ -8,11 +8,11 @@ const galleryList = document.getElementById('gallery');
 // const modalContent = document.querySelector('.modal_content');
 const filmField = document.querySelector('#film-info');
 
-const btn = document.getElementById('btn_modal_window');
+// const btn = document.getElementById('btn_modal_window');
 const close = document.querySelector('.close_modal_window');
 
 galleryList.addEventListener('click', openModal);
-btn.addEventListener('click', openModal);
+// btn.addEventListener('click', openModal);
 close.addEventListener('click', closeModalWindow);
 window.addEventListener('click', onWindowClick);
 window.addEventListener('keydown', closeModalWindowOnEsc);
@@ -29,7 +29,7 @@ async function getFullMovieInfo(id) {
 
 async function openModal(ev) {
   ev.preventDefault();
-  if (ev.target.nodeName === 'IMG' || ev.target.nodeName === 'BUTTON') {
+  if (ev.target.nodeName === 'IMG') {
     await getFullMovieInfo(ev.target.dataset.id);
     modal.style.display = 'flex';
     document.body.classList.add('modal-open');
