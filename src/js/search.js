@@ -14,37 +14,42 @@ buttonRef.addEventListener('click', onSearch);
 const apiService = new MovieApiService();
 
 function onSearch() {
-  searchMovie(inputRef.value);
+  searchMovies(inputRef.value);
 }
 
-async function searchMovie(searchQuery) {
+async function searchMovies(searchQuery) {
   if (searchQuery === '') {
     return;
   }
+
   apiService.query = searchQuery;
 
   apiService.resetPage();
   const genresList = genres.genres;
 
-  const movies = await apiService.fetchMovieByQuery(searchQuery);
+  try {
+    const movies = await apiService.fetchMovieByQuery(searchQuery);
+    const moviesProcessed = movies.results.map(
+      ({ id, release_date, title, poster_path, genre_ids }) => {
+        const genresNamed = genresList
+          .filter(genre => genre_ids.includes(genre.id))
+          .map(genre => genre.name)
+          .join(', ');
 
-  const render = movies.results.map(({ id, release_date, title, poster_path, genre_ids }) => {
-    const genresNamed = genresList
-      .filter(genre => genre_ids.includes(genre.id))
-      .map(genre => genre.name)
-      .join(', ');
-    console.log(genresNamed);
+        return {
+          id,
+          release_date: release_date.slice(0, 4),
+          title,
+          posterURL: `${IMAGE_BASE_URL}w500${poster_path}`,
+          genres: genresNamed,
+        };
+      },
+    );
 
-    return {
-      id,
-      release_date: release_date.slice(0, 4),
-      title,
-      posterURL: `${IMAGE_BASE_URL}w500${poster_path}`,
-      genre_ids: genresNamed,
-    };
-  });
-
-  renderMovies(render);
+    renderMovies(moviesProcessed);
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 function renderMovies(movies) {
