@@ -33,6 +33,7 @@ async function openModal(ev) {
     await getFullMovieInfo(ev.target.dataset.id);
     modal.style.display = 'flex';
     document.body.classList.add('modal-open');
+    modal.classList.add('animated');
   }
   return;
 }
