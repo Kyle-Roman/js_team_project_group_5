@@ -40,20 +40,19 @@ async function openModal(ev) {
 function closeModalWindow(ev) {
   modal.style.display = 'none';
   document.body.classList.remove('modal-open');
-  btn.removeEventListener('click', closeModalWindow);
 }
 
 function closeModalWindowOnEsc(ev) {
   if (ev.code === 'Escape') {
     closeModalWindow();
-    window.removeEventListener('keydown', closeModalWindowOnEsc);
+    // window.removeEventListener('keydown', closeModalWindowOnEsc);
   }
 }
 
 function onWindowClick(ev) {
   if (ev.target == modal) {
     closeModalWindow();
-    window.removeEventListener('click', onWindowClick);
+    // window.removeEventListener('click', onWindowClick);
   }
 }
 
