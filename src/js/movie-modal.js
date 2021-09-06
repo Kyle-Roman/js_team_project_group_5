@@ -37,30 +37,6 @@ async function openModal(ev) {
   return;
 }
 
-// modal.style.display = 'flex';
-// document.body.classList.add('modal-open');
-
-// function openModal(ev) {
-//   ev.preventDefault();
-//   let id = ev.target.dataset.action;
-//   if (ev.target.nodeName !== 'IMG') {
-//     return;
-//   }
-//   getFullMovieInfo(id);
-
-// modal.style.display = 'flex';
-// document.body.classList.add('modal-open');
-// }
-
-// function createModalMovieMarkup(tempModalData) {
-//   return tempModalData.map(modalMovieTpl).join('');
-// }
-
-// function renderModalMarkup(tempModalData) {
-//   const markup = createModalMovieMarkup(tempModalData);
-//   modalContent.innerHTML = markup;
-// }
-
 function closeModalWindow(ev) {
   modal.style.display = 'none';
   document.body.classList.remove('modal-open');

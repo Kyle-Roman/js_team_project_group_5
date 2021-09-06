@@ -48,6 +48,7 @@
 }
 
 .modal-card-poster {
+  display: block;
   border-radius: 5px;
   width: 240px;
   @media screen and (min-width: 768px) {
@@ -60,6 +61,7 @@
 }
 
 .modal-card {
+  display: inline-block;
   width: 240px;
   @media screen and (min-width: 768px) {
     width: 264px;
@@ -75,8 +77,9 @@
   line-height: 1.15;
   text-transform: uppercase;
   margin-bottom: 20px;
+  margin-top: 30px;
   @media screen and (min-width: 768px) {
-    margin-top: 30px;
+    margin-top: 0;
   }
   @media screen and (min-width: 1024px) {
     font-size: 30px;
@@ -84,7 +87,7 @@
   }
 }
 
-.modal-card-text {
+.modal-card-information {
   display: flex;
   margin-bottom: 20px;
 }
