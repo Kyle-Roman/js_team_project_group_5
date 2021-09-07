@@ -73,6 +73,8 @@
   </div>
   </div>
   <!-- ===========end of modal window =========-->
+  <!--LOADER-->
+  <include src="./partials/login.html"></include>
 
   <!--LOADER-->
   <include src="./partials/loader.html"></include>
@@ -99,6 +101,18 @@
 
   <a href="#" class="scrollup wow animate__bounce">Наверх</a>
   <script src="./js/scroll_up/scrollUp.js"></script>
+
+  <!-- update the version number as needed -->
+  <script src="/__/firebase/7.7.0/firebase-app.js"></script>
+  <!-- include only the Firebase features as you need -->
+  <script src="/__/firebase/7.7.0/firebase-auth.js"></script>
+  <script src="/__/firebase/7.7.0/firebase-firestore.js"></script>
+  <script src="/__/firebase/7.7.0/firebase-functions.js"></script>
+  <!-- initialize the SDK after all desired features are loaded -->
+  <script src="/__/firebase/init.js"></script>
+
+  <script src="./js/login/app.js"></script>
+  <script src="./js/login/login.js"></script>
 </body>
 
 </html>
