@@ -1,20 +1,21 @@
 import MovieApiService from './api-service';
 import config from '../data/config.json';
 import genres from '../data/genres.json';
-import movieCardTpl from '../templates/image-card.hbs';
-
-const galleryRef = document.querySelector('#gallery');
-const inputRef = document.querySelector('#search-input');
-const buttonRef = document.querySelector('#search-button');
+import movieCardTpl from '../templates/movie-card.hbs';
 
 const IMAGE_BASE_URL = config.images.secure_base_url;
 
-buttonRef.addEventListener('click', onSearch);
+const formRef = document.querySelector('#search-form');
+const galleryRef = document.querySelector('#gallery');
+
+formRef.addEventListener('submit', onSubmit);
 
 const apiService = new MovieApiService();
 
-function onSearch() {
-  searchMovies(inputRef.value);
+function onSubmit(event) {
+  event.preventDefault();
+
+  searchMovies(event.currentTarget.elements.search.value);
 }
 
 async function searchMovies(searchQuery) {

@@ -1,16 +1,33 @@
 {{#each this}}
 
-  <li class='card__item list' id='{{id}}'>
+  <li class='wow animate__fadeInUp card__item list'>
     <article class='card'>
       <a href='' class='card__link link'>
         <div class='card-img-container'>
-          <img src='{{posterURL}}' alt='Movie Poster' class='card__image' /></div>
+          <img
+            src='https://image.tmdb.org/t/p/w500{{poster_path}}'
+            alt=''
+            class='card__image'
+          /></div>
 
         <div class='card__description'>
-          <h2 class='card__name'>{{title}}</h2>
-          <p class='card__info'>{{genres}} | {{release_date}}</p>
+          <div class='card-name__container'>
+            <h2 class='card__name'>{{original_title}}</h2>
+          </div>
+
+          <p class='card__info'>
+            {{#with genre_ids}}
+              <span>{{this}}</span>
+
+            {{/with}}
+            |
+            <span class='card__rating'>
+              {{release_date}}
+            </span>
+          </p>
         </div>
       </a>
     </article>
   </li>
+
 {{/each}}
