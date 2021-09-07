@@ -20,7 +20,6 @@ window.addEventListener('keydown', closeModalWindowOnEsc);
 async function getInfoAndRenderMarkup(id) {
   try {
     const film = await apiService.fetchMovieById(id);
-    console.log(film);
     filmField.innerHTML = modalMovieTpl(film);
   } catch {
     return console.error();
