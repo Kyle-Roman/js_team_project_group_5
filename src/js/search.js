@@ -1,9 +1,5 @@
 import MovieApiService from './api-service';
-import config from '../data/config.json';
-import genres from '../data/genres.json';
 import movieCardTpl from '../templates/movie-card.hbs';
-
-const IMAGE_BASE_URL = config.images.secure_base_url;
 
 const formRef = document.querySelector('#search-form');
 const galleryRef = document.querySelector('#gallery');
@@ -24,9 +20,10 @@ async function searchMovies(searchQuery) {
   }
 
   apiService.query = searchQuery;
-
   apiService.resetPage();
-  const genresList = genres.genres;
+
+  const IMAGE_BASE_URL = localStorage.getItem('img_base_url');
+  const genresList = JSON.parse(localStorage.getItem('genres')).genres;
 
   try {
     const movies = await apiService.fetchMovieByQuery(searchQuery);
@@ -39,7 +36,7 @@ async function searchMovies(searchQuery) {
 
         return {
           id,
-          release_date: release_date.slice(0, 4),
+          release_date: release_date ? release_date.slice(0, 4) : 'Date unknown',
           title,
           posterURL: `${IMAGE_BASE_URL}w500${poster_path}`,
           genres: genresNamed,
