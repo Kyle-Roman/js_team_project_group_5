@@ -19,11 +19,12 @@
 }
 
 .card__image {
-    border-radius: 10px;
-}
+    flex-basis: 398px;
+    flex-shrink: 0;
 
-.card-img-container {
-    border-radius: 25px;
+    height: 359px;
+
+    border-radius: 5px;
 }
 
 .card__description {
@@ -33,7 +34,7 @@
     padding-left: 10px;
     padding-right: 10px;
 
-    border: 1px solid #eeeeee;
+    //border: 1px solid #eeeeee;
 
     display: inline-block;
     vertical-align: middle;
