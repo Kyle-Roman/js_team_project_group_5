@@ -44,9 +44,17 @@ export default class ApiService {
     return await response.json();
   }
 
-  async fetchMovieById(id) {
-    const response = await fetch(`${BASE_URL}/movie/${id}?api_key=${API_KEY}`);
-    return await response.json();
+  // async fetchMovieById(id) {
+  //   const response = await fetch(`${BASE_URL}/movie/${id}?api_key=${API_KEY}`);
+  //   return await response.json();
+  // }
+  fetchMovieById(id) {
+    return fetch(`${BASE_URL}/movie/${id}?api_key=${API_KEY}`)
+      .then(response => response.json())
+      .then(result => ({
+        ...result,
+        release_date: result.release_date ? result.release_date.slice(0, 4) : 'Date unknown',
+      }));
   }
 
   incrementPage() {
