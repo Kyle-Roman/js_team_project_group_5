@@ -1,0 +1,21 @@
+{{#each this}}
+
+<li class='wow animate__fadeInUp card__item list'>
+  <article class='card'>
+    <a href='' class='card__link link'>
+      <div class='card-img-container'>
+        <img src='{{posterURL}}' alt='' class='card__image' data-id='{{id}}' />
+      </div>
+      <div class='card__description'>
+        <div class='card-name__container'>
+          <h2 class='card__name'>{{title}}</h2>
+        </div>
+
+        <p class='card__info'>{{genres}} | {{release_date}}</p>
+
+      </div>
+    </a>
+  </article>
+</li>
+
+{{/each}}
