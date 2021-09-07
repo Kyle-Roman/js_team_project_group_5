@@ -17,10 +17,9 @@ close.addEventListener('click', closeModalWindow);
 window.addEventListener('click', onWindowClick);
 window.addEventListener('keydown', closeModalWindowOnEsc);
 
-async function getFullMovieInfo(id) {
+async function getInfoAndRenderMarkup(id) {
   try {
     const film = await apiService.fetchMovieById(id);
-    console.log(film);
     filmField.innerHTML = modalMovieTpl(film);
   } catch {
     return console.error();
@@ -30,9 +29,10 @@ async function getFullMovieInfo(id) {
 async function openModal(ev) {
   ev.preventDefault();
   if (ev.target.nodeName === 'IMG') {
-    await getFullMovieInfo(ev.target.dataset.id);
+    await getInfoAndRenderMarkup(ev.target.dataset.id);
     modal.style.display = 'flex';
     document.body.classList.add('modal-open');
+    modal.classList.add('animated');
   }
   return;
 }
@@ -55,42 +55,3 @@ function onWindowClick(ev) {
     // window.removeEventListener('click', onWindowClick);
   }
 }
-
-// import functionName from './api-service';
-// // import templateName from '../hbs/modal.hbs';
-
-// const modal = document.getElementById('myModal');
-// const btn = document.getElementById('btn_modal_window');
-// const close = document.getElementsByClassName('close_modal_window')[0];
-
-// btn.addEventListener('click', openModal);
-// close.addEventListener('click', closeModalWindow);
-// window.addEventListener('click', onWindowClick);
-
-// function openModal(ev) {
-//   ev.preventDefault();
-//   modal.style.display = 'flex';
-//   document.body.classList.add('modal-open');
-// }
-
-// function closeModalWindow(ev) {
-//   modal.style.display = 'none';
-//   document.body.classList.remove('modal-open');
-// }
-
-// function onWindowClick(ev) {
-//   if (ev.target == modal) {
-//     closeModalWindow();
-//   }
-// }
-
-// window.addEventListener(
-//   'keydown',
-//   function (event) {
-//     if (event.code === 'Escape') {
-//       closeModalWindow();
-//     }
-//     return;
-//   },
-//   true,
-// );
