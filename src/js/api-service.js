@@ -76,3 +76,37 @@ export default class ApiService {
     this.page = 1;
   }
 }
+
+
+  //================= вариант для пагинации =======================
+  // fetchTrends = (page = 1) => {
+  //   return fetch(
+  //     `${BASE_URL}/movie/popular?api_key=${API_KEY}&language=en-US&page=${page}`
+  //   )
+  //     .then((r) => {
+  //       if (r.ok) {
+  //         return r.json();
+  //       }
+  //       return null;
+  //     })
+  //     .then((r) => r
+
+  //     );
+  // };
+
+  // fetchGenresList = () => {
+  //   return fetch(`${BASE_URL}/genre/movie/list?api_key=${API_KEY}&language=en-US`)
+  //     .then((r) => {
+  //       if (r.ok) {
+  //         return r.json();
+  //       }
+  //       return null;
+  //     })
+  //     .then(({ genres }) => {
+  //       let genresList = {};
+  //       for (let genre of genres) {
+  //         genresList[genre.id] = genre.name;
+  //       }
+  //       return genresList;
+  //     });
+  // };
