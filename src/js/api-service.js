@@ -48,14 +48,25 @@ export default class ApiService {
   //   const response = await fetch(`${BASE_URL}/movie/${id}?api_key=${API_KEY}`);
   //   return await response.json();
   // }
+
+  //================= вариант для стягивания чистых жанров в модалку =======================
   fetchMovieById(id) {
     return fetch(`${BASE_URL}/movie/${id}?api_key=${API_KEY}`)
       .then(response => response.json())
       .then(result => ({
         ...result,
-        release_date: result.release_date ? result.release_date.slice(0, 4) : 'Date unknown',
+        genres: this.getGenres(result),
       }));
   }
+
+  getGenres(result) {
+    let genreArr = result['genres'].map(genre => genre['name']);
+    if (genreArr.length === 0) {
+      return (genreArr = [`Unknown`]);
+    }
+    return genreArr;
+  }
+  //==================== конец ==============================================
 
   incrementPage() {
     this.page += 1;

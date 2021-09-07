@@ -41,6 +41,7 @@
 
 .film-info {
   display: inline-block;
+
   @media screen and (min-width: 768px) {
     display: flex;
     justify-content: space-between;
@@ -50,13 +51,17 @@
 .modal-card-poster {
   display: block;
   border-radius: 5px;
+  max-width: 100%;
   width: 240px;
+  height: auto;
   @media screen and (min-width: 768px) {
-    width: 300px;
+    max-height: 380px;
+    width: 285px;
     margin-right: 30px;
   }
   @media screen and (min-width: 1024px) {
-    width: 350px;
+    width: 320px;
+    max-height: none;
   }
 }
 
@@ -92,11 +97,38 @@
   margin-bottom: 20px;
 }
 
+.about-title {
+  margin-bottom: 10px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  text-transform: uppercase;
+}
+
+.film-vote {
+  background-color: #ff6b01;
+  display: inline-block;
+  color: #fff;
+  border-radius: 5px;
+  text-align: center;
+  width: 36px;
+  height: 16px;
+}
+
+.about-text {
+  font-weight: 500px;
+  font-size: 12px;
+  line-height: 1.66;
+}
+
 .left-part,
 .right-part {
   font-weight: 500;
   font-size: 12px;
   line-height: 1.333;
+  & > li {
+    padding-bottom: 10px;
+  }
 }
 
 .left-part {
@@ -132,6 +164,7 @@
 .modal-buttons {
   display: flex;
   justify-content: space-between;
+  margin-top: 21px;
   @media screen and (min-width: 1024px) {
     justify-content: flex-start;
   }
@@ -163,7 +196,7 @@
 }
 
 .watched-button {
-  @media screen and (min-width: 1024px) {
+  @media screen and (min-width: 768px) {
     margin-right: 15px;
   }
 }
