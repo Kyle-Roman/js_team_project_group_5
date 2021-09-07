@@ -1,6 +1,8 @@
 import MovieApiService from './api-service';
 import movieCardTpl from '../templates/movie-card.hbs';
 
+import 'animate.css';
+
 const formRef = document.querySelector('#search-form');
 const galleryRef = document.querySelector('#gallery');
 
@@ -31,15 +33,17 @@ async function searchMovies(searchQuery) {
       ({ id, release_date, title, poster_path, genre_ids }) => {
         const genresNamed = genresList
           .filter(genre => genre_ids.includes(genre.id))
-          .map(genre => genre.name)
-          .join(', ');
+          .map(genre => genre.name);
 
         return {
           id,
           release_date: release_date ? release_date.slice(0, 4) : 'Date unknown',
           title,
-          posterURL: `${IMAGE_BASE_URL}w500${poster_path}`,
-          genres: genresNamed,
+          posterURL: poster_path ? `${IMAGE_BASE_URL}w500${poster_path}` : '',
+          genres:
+            genresNamed.length > 2
+              ? genresNamed.slice(0, 2).concat('Other').join(', ')
+              : genresNamed.join(', '),
         };
       },
     );
