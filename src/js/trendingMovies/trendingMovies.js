@@ -18,22 +18,40 @@ function fetchTrendingMovies(e) {
   const genresList = JSON.parse(localStorage.getItem('genres')).genres;
 
   moviesApiService.fetchMovies().then(results => {
-    const moviesProcessed = results.map(({ id, release_date, title, poster_path, genre_ids }) => {
-      const genresNamed = genresList
-        .filter(genre => genre_ids.includes(genre.id))
-        .map(genre => genre.name);
-      //join(',');
+    const moviesProcessed = results.map(
+      ({ id, release_date, title, poster_path, genre_ids, backdrop_path }) => {
+        const genresNamed = genresList
+          .filter(genre => genre_ids.includes(genre.id))
+          .map(genre => genre.name);
+        //join(',');
+        if (backdrop_path === null) {
+          return {
+            id,
+            release_date: release_date ? release_date.slice(0, 4) : 'Date unknown',
+            title,
+            posterURL:
+              'https://cdn.pixabay.com/photo/2021/08/16/05/31/film-projector-6549355_1280.jpg',
+            genres: genresNamed,
+          };
+        }
+        if (genresNamed.length > 3) {
+          console.log(`${genresNamed[0]}, ${genresNamed[1]}, Other`);
+
 
       if (genresNamed.length > 3) {
         //console.log(`${genresNamed[0]}, ${genresNamed[1]}, Other`);
 
-        return {
-          id,
-          release_date: release_date ? release_date.slice(0, 4) : 'Date unknown',
-          title,
-          posterURL: `${IMAGE_BASE_URL}w500${poster_path}`,
-          genres: `${genresNamed[0]}, ${genresNamed[1]}, Other`,
-        };
+          return {
+            id,
+            release_date: release_date ? release_date.slice(0, 4) : 'Date unknown',
+            title,
+            posterURL: `${IMAGE_BASE_URL}w500${poster_path}`,
+            genres: `${genresNamed[0]}, ${genresNamed[1]}, Other`,
+          };
+          //   //   console.log(genresNamed.slice(0, 18));
+          //   //   genresNamed.slice(20);
+        } else if ((genresNamed.length = 2)) {
+          console.log(`${genresNamed[0]}, ${genresNamed[1]}`);
 
         //   //   console.log(genresNamed.slice(0, 18));
         //   //   genresNamed.slice(20);
@@ -60,6 +78,27 @@ function fetchTrendingMovies(e) {
       }
       //console.log(genresNamed);
     });
+          return {
+            id,
+            release_date: release_date ? release_date.slice(0, 4) : 'Date unknown',
+            title,
+            posterURL: `${IMAGE_BASE_URL}w500${poster_path}`,
+            genres: `${genresNamed[0]}, ${genresNamed[1]}`,
+          };
+        } else if ((genresNamed.length = 1)) {
+          console.log(`${genresNamed[0]}`);
+
+          return {
+            id,
+            release_date: release_date ? release_date.slice(0, 4) : 'Date unknown',
+            title,
+            posterURL: `${IMAGE_BASE_URL}w500${poster_path}`,
+            genres: `${genresNamed[0]}`,
+          };
+        }
+        console.log(genresNamed);
+      },
+    );
     moviesApiService.resetPage();
 
     appendMoviesMarkup(moviesProcessed);
