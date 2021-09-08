@@ -25,7 +25,7 @@ function fetchTrendingMovies(e) {
       //join(',');
 
       if (genresNamed.length > 3) {
-        console.log(`${genresNamed[0]}, ${genresNamed[1]}, Other`);
+        //console.log(`${genresNamed[0]}, ${genresNamed[1]}, Other`);
 
         return {
           id,
@@ -38,7 +38,7 @@ function fetchTrendingMovies(e) {
         //   //   console.log(genresNamed.slice(0, 18));
         //   //   genresNamed.slice(20);
       } else if ((genresNamed.length = 2)) {
-        console.log(`${genresNamed[0]}, ${genresNamed[1]}`);
+        //console.log(`${genresNamed[0]}, ${genresNamed[1]}`);
 
         return {
           id,
@@ -48,7 +48,7 @@ function fetchTrendingMovies(e) {
           genres: `${genresNamed[0]}, ${genresNamed[1]}`,
         };
       } else if ((genresNamed.length = 1)) {
-        console.log(`${genresNamed[0]}`);
+        //console.log(`${genresNamed[0]}`);
 
         return {
           id,
@@ -58,14 +58,10 @@ function fetchTrendingMovies(e) {
           genres: `${genresNamed[0]}`,
         };
       }
-      console.log(genresNamed);
+      //console.log(genresNamed);
     });
     moviesApiService.resetPage();
-    // results.forEach(function (element) {
-    //   console.log(element['release_date'].slice(0, 4));
-    //   const release_date = element['release_date'].slice(0, 4);
-    //   return release_date;
-    // });
+
     appendMoviesMarkup(moviesProcessed);
   });
 }

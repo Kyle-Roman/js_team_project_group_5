@@ -21,14 +21,8 @@ export default class MoviesApiService {
       .then(r => r.json())
       .then(data => {
         this.incrementPage();
-
+        console.log(data.total_pages);
         console.log(data.results);
-
-        data.results.forEach(function (element) {
-          console.log(element['release_date'].slice(0, 4));
-          const release_date = element['release_date'].slice(0, 4);
-          return release_date;
-        });
 
         return data.results;
       });
