@@ -25,7 +25,7 @@ export default class MoviesApiService {
         console.log(data.results);
 
         data.results.forEach(function (element) {
-          console.log(element['release_date'].slice(0, 4));
+          // console.log(element['release_date'].slice(0, 4));
           const release_date = element['release_date'].slice(0, 4);
           return release_date;
         });
