@@ -42,7 +42,7 @@ body {
 .phone {
     position: relative;
     z-index: 2;
-    width: 20rem;
+    width: 15rem;
     height: 20rem;
     background-color: inherit;
     box-shadow: 0 4px 35px rgba(0, 0, 0, 0.1);
@@ -134,7 +134,7 @@ label {
     background-color: rgba(0, 0, 0, 0.1);
     border-radius: 100px;
     position: relative;
-    margin: 1.8rem 0 4rem 0;
+
     cursor: pointer;
 }
 .toggle {
