@@ -1,23 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.0.0/modern-normalize.min.css"
-  integrity="sha512-ISS7cAi1PEhQ8jnbJpJZMd29NlhNj4AWYyLOSp2CE/CsHxTCu+r+t0D2yoJudVrd0/8fTVPUVDzY5Tvli75u/g=="
-  crossorigin="anonymous" />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-<link rel="stylesheet" href="./css/animate.css" />
-
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon" />
-</head>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="./css/styles.css">
+  <title>JS group 5 team project</title>
 
 <body>
   <header class="header header-home">
-    <div class="header__container container">
-      <!-- <div class="header__container"></div> -->
+    <!-- <div class="header__container container">
+
       <div class="wrapper">
         <img class="icon-film" src="./images/icons/heart.svg" alt="film frame" />
         <h1 class="logo-img visually-hidden">Filmoteka</h1>
@@ -25,11 +18,11 @@
         <nav class="navigation">
           <ul class="menu__list list">
             <li class="menu__item">
-              <!-- Вешаем класс current через js для подчеркивания текущей страницы -->
+
               <button class="menu__link js-menu__button current" id="home" type="button">Home</button>
             </li>
             <li class="menu__item">
-              <!-- Вешаем класс current через js для подчеркивания текущей страницы -->
+
               <button class="menu__link js-menu__button" id="my-library" type="button" data-modal-auth-open>
                 My library
               </button>
@@ -38,14 +31,14 @@
         </nav>
       </div>
       <div class="markup-wrapper">
-        <!-- Динамически рендерим разметку хэдэра для Home -->
+
         <form class="search-form">
           <label for="searchQuery" class="sr-only"></label>
           <input class="search" type="text" name="query" id="searchQuery" placeholder="Movie search"
             autocomplete="off" />
           <button class="button-search" type="submit"></button>
         </form>
-        <!-- Динамически рендерим разметку хэдэра для My library -->
+
         <div class="btn-container__library visually-hidden">
           <ul class="btn-list list">
             <li class="btn-item">
@@ -61,17 +54,68 @@
           </ul>
         </div>
       </div>
+    </div> -->
+    <div class="auth ">
+      <div class="modal">
+        <h2>Login</h2>
+        <form class="login">
+          <input type="text" name="email" placeholder="Email">
+          <input type="password" name="password" placeholder="Password">
+          <button>Login</button>
+          <p class="error"></p>
+        </form>
+        <div>No account? <a class="switch">Register instead</a></div>
+      </div>
+      <div class="modal">
+        <h2>Register</h2>
+        <form class="register">
+          <input type="text" name="email" placeholder="Email">
+          <input type="password" name="password" placeholder="Password">
+          <button>Register</button>
+          <p class="error"></p>
+        </form>
+        <div>Got an account? <a class="switch">Login instead</a></div>
+      </div>
     </div>
+
+    <div class="new-request">
+      <div class="modal">
+        <h2>Request a Tutorial</h2>
+        <form>
+          <input type="text" name="request" placeholder="Request...">
+          <button>Submit Request</button>
+          <p class="error"></p>
+        </form>
+      </div>
+    </div>
+
+    <div>
+      <a class="add-request">add request</a>
+      <a class="sign-out">sign out</a>
+    </div>
+    <section class="content">
+      <h1>Tutorial Requests</h1>
+      <ul class="request-list">
+        <li>
+          <span class="text">Laravel 6 tutorial</span>
+          <div>
+            <span class="votes">125</span>
+            <i class="material-icons upvote">arrow_upward</i>
+          </div>
+        </li>
+      </ul>
+      <button class="call">Say hello</button>
+    </section>
   </header>
   <!-- ===========movie modal window =========-->
   <!-- <button id="btn_modal_window">future card</button> -->
-  <div class="modal wow animate__zoomIn" id="myModal">
+  <!-- <div class="modal wow animate__zoomIn" id="myModal">
     <div class="modal_content">
       <button type="button" class="close_modal_window"></button>
       <div class="film-info" id="film-info"></div>
     </div>
   </div>
-  </div>
+  </div> -->
   <!-- ===========end of modal window =========-->
   <!--LOADER-->
   <include src="./partials/login.html"></include>
@@ -90,7 +134,7 @@
   <!-- FOOTER -->
   <include src="./partials/footer.html"></include>
 
-  <script src="./index.js"></script>
+  <!-- <script src="./index.js"></script>
   <script src="./js/movie-modal.js" type="module"></script>
   <script src="./js/trendingMovies/trendingMovies.js"></script>
 
@@ -100,17 +144,16 @@
   </script>
 
   <a href="#" class="scrollup wow animate__bounce">Наверх</a>
-  <script src="./js/scroll_up/scrollUp.js"></script>
+  <script src="./js/scroll_up/scrollUp.js"></script> -->
 
-
-  <!-- FIREBASE LOGIN -->
+  <!-- update the version number as needed -->
   <script src="/__/firebase/8.10.0/firebase-app.js"></script>
-
+  <!-- include only the Firebase features as you need -->
   <script src="/__/firebase/8.10.0/firebase-auth.js"></script>
   <script src="/__/firebase/8.10.0/firebase-firestore.js"></script>
   <script src="/__/firebase/8.10.0/firebase-functions.js"></script>
-
-  <script src="/__/firebase/init.js"></script>
+  <!-- initialize the SDK after all desired features are loaded
+  <script src="/__/firebase/init.js"></script> -->
 
   <script src="./js/login/app.js"></script>
   <script src="./js/login/login.js"></script>
