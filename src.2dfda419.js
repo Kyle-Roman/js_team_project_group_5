@@ -25,4 +25,4 @@ let e=document.querySelector("#preloader");window.addEventListener("load",()=>{s
 },{"./api-service":"hC31"}],"Focm":[function(require,module,exports) {
 "use strict";require("./js/search"),require("./sass/main.scss"),require("./js/refs"),require("./js/team-modal"),require("./js/local-storage"),require("./js/loader"),require("./js/pagination");
 },{"./js/search":"HU2o","./sass/main.scss":"clu1","./js/refs":"VyiV","./js/team-modal":"SVxB","./js/local-storage":"yGjV","./js/loader":"vQE2","./js/pagination":"o8lo"}]},{},["Focm"], null)
-//# sourceMappingURL=/js_team_project_group_5/src.4f2df4e5.js.map
+//# sourceMappingURL=/js_team_project_group_5/src.2dfda419.js.map
