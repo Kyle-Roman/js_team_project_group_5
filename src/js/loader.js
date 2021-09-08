@@ -1,8 +1,8 @@
-let maskLoader = document.querySelector('.mask');
+let preLoader = document.querySelector('#preloader');
 
 window.addEventListener('load', () => {
-    maskLoader.classList.add('hide');
+    // maskLoader.classList.add('hide');
     setTimeout(() => {
-        maskLoader.remove();
-    }, 600);
+        preLoader.remove();
+    }, 1500);
 })
