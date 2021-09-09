@@ -24,19 +24,10 @@ export default class MoviesApiService {
 
         console.log(data.results);
 
-        //data.results.forEach(
-        // Handlebars.registerHelper(
-        //   'sliceReleaseDate',
-        //   data.results.forEach(function (element) {
-        //     let sliceReleaseDate = element['release_date'].slice(0, 4);
-        //     console.log(sliceReleaseDate);
-        //     return sliceReleaseDate;
-        //   }),
-        // ),
-        // );
-
         data.results.forEach(function (element) {
-          //console.log(element['release_date']);
+          // console.log(element['release_date'].slice(0, 4));
+          const release_date = element['release_date'].slice(0, 4);
+          return release_date;
         });
 
         return data.results;

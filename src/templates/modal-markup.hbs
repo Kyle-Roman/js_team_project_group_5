@@ -1,32 +1,40 @@
 <img
   class='modal-card-poster'
-  src='https://image.tmdb.org/t/p/w300/https://image.tmdb.org/t/p/original/wwemzKWzjKYJFfCeiB57q3r4Bcm.png'
-  alt='xxxxxxx'
+  src='https://image.tmdb.org/t/p/w300/{{poster_path}}'
+  alt='{{original_title}}'
 />
 <article class='modal-card'>
-  <h2 class='modal-card-title'>xxxxxxx</h2>
+  <h2 class='modal-card-title'>{{original_title}}</h2>
   <div class='modal-card-information'>
-    <ul class='left-part'>
-      <li>Vote / Votes</li>
-      <li>Popularity</li>
-      <li>Original Title</li>
-      <li>Genre</li>
-    </ul>
-    <ul class='right-part'>
-      <li>
-        <span class='film-vote'>xxxxxxx</span>
-        <span class='left-part'> / </span>
-        <span class='film-votes'>xxxxxxx</span>
-      </li>
-      <li>xxxxxxx</li>
-      <li class='film-original-title'>xxxxxxx</li>
-      <li class='film-genres'>
-        xxxxxxx
-      </li>
-    </ul>
+    <table>
+      <tr>
+        <td class='left-part'>Vote / Votes</td>
+        <td class='right-part'><span class='film-vote'>{{this.vote_average}}</span>
+          /
+          <span class='film-votes'>{{this.vote_count}}</span></td>
+      </tr>
+      <tr>
+        <td class='left-part'>Popularity</td>
+        <td class='right-part'>{{this.popularity}}</td>
+      </tr>
+      <tr>
+        <td class='left-part'>Original Title</td>
+        <td class='right-part'>{{this.original_title}}</td>
+      </tr>
+      <tr>
+        <td class='left-part'>Genre</td>
+        <td class='right-part'>
+          <div>{{#each genres}}
+              {{#unless @last}}<span>{{this}}, </span>{{/unless}}
+              {{#if @last}}<span>{{this}}</span>{{/if}}
+            {{/each}}
+          </div>
+        </td>
+      </tr>
+    </table>
   </div>
   <h3 class='about-title'>About</h3>
-  <p class='about-text'>xxxxxxx</p>
+  <p class='about-text'>{{overview}}</p>
   <div class='modal-buttons'>
     <button class='watched-button'>add to watched</button>
     <button class='queue-button'>add to queue</button>

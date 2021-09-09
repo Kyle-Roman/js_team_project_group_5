@@ -5,7 +5,7 @@
   font-weight: 500;
 
   &:hover {
-    color: orange;
+    color: #ff6b08;
   }
 }
 
@@ -17,14 +17,16 @@ p {
 .footer_container {
   margin-left: auto;
   margin-right: auto;
-  color: grey;
+  color: #545454;
   font-family: $main-font;
   align-items: center;
 
-  .footer__image {
-    padding-left: 10px;
-    padding-right: 10px;
-    color: orange;
+  .footer__icon {
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 14px;
+    height: 14px;
+    fill: #ff6b08;
   }
 
   @media screen and (min-width: 768px) {
@@ -35,7 +37,7 @@ p {
 }
 
 footer {
-  background-color: lightgray;
+  background-color: #f7f7f7;
   padding-bottom: 30px;
   padding-top: 30px;
 }
@@ -82,17 +84,17 @@ footer {
     pointer-events: none;
   }
 }
-.teamModalBtnClose {
-  font-size: 30px;
-  margin-top: 10px;
-  margin-right: 10px;
-  position: absolute;
-  right: 0;
-  top: 0;
-  &:hover {
-    color: orange;
-  }
-}
+// .teamModalBtnClose {
+//   font-size: 30px;
+//   margin-top: 10px;
+//   margin-right: 10px;
+//   position: absolute;
+//   right: 0;
+//   top: 0;
+//   &:hover {
+//     color: orange;
+//   }
+// }
 .team_list {
   @media screen and (max-width: 767px) {
     display: flex;
@@ -108,6 +110,8 @@ footer {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    padding-top: 30px;
+    padding-bottom: 30px;
   }
 }
 
