@@ -3,7 +3,7 @@ import 'animate.css';
 
 import MoviesApiService from '../trendingMovies/api-service';
 
-import moviesTpl from '../../templates/trending-movie-card.hbs';
+import moviesTpl from '../../templates/movie-card.hbs';
 
 const refs = {
   gallery: document.querySelector('.gallery'),
