@@ -28,9 +28,9 @@ async function getInfoAndRenderMarkup(id) {
 
 async function openModal(ev) {
   ev.preventDefault();
-  console.log(ev.target.nodeName);
-  if (ev.target.nodeName === 'IMG' || ev.currentTarget.hasAttribute('data-id')) {
-    await getInfoAndRenderMarkup(ev.target.dataset.id);
+  // ev.target.nodeName === 'IMG' ||
+  if (ev.target.closest('li')) {
+    await getInfoAndRenderMarkup(ev.target.closest('li').dataset.id);
     modal.style.display = 'flex';
     document.body.classList.add('modal-open');
     modal.classList.add('animated');
