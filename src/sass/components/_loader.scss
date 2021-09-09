@@ -1,7 +1,7 @@
 // PRELOADER
 
-.loading {
-  overflow: hidden;
+.scroll-off {
+  overflow-y: hidden;
   height: 100vh;
 }
 
@@ -15,11 +15,10 @@
   left: 0;
   top: 0;
   z-index: 2;
-  transition: 1000ms;
+  transition: 1500ms;
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
 }
 
 .loader {
