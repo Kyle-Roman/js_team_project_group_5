@@ -1,3 +1,5 @@
+// import { initializeApp } from "firebase/app";
+
 const requestModal = document.querySelector('.new-request');
 const requestLink = document.querySelector('.add-request');
 
