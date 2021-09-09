@@ -1,3 +1,7 @@
+$(document).ready(function () {
+  $(this).scrollTop(0);
+});
+
 import './js/search';
 import './sass/main.scss';
 import './js/refs';
