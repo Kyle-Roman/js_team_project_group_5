@@ -1,5 +1,5 @@
 import ApiService from '../js/trendingMovies/api-service';
-import moviesTpl from '../templates/trending-movie-card.hbs';
+import moviesTpl from '../templates/movie-card_library.hbs';
 
 const movieContainer = document.querySelector('.pagination ');
 const trendMovieContainer = document.querySelector('.movie-container');
