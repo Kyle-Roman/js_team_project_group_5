@@ -3,29 +3,7 @@ $secondary-color: #000000;
 
 $accent-color: #ff6b01;
 
-.header__container {
-    height: 230px;
-    min-width: 320px;
-    margin: 0 auto;
-    background: rgba(0, 0, 0, 0.56);
-  
-    @media screen and (max-width: 767px) {
-      max-width: 320px;
-    }
-  
-    @media screen and (min-width: 768px) {
-      max-width: 768px;
-    }
-  
-    @media screen and (min-width: 1024px) {
-      max-width: 1024px;
-    }
-  }
-  
 .header {
-    height: 230px;
-    min-width: 320px;
-    max-width: 320px;
     background-image: url('../images/mobile/rectangle@1x.jpg');
     background-repeat: no-repeat;
     background-size: cover;
@@ -37,7 +15,7 @@ $accent-color: #ff6b01;
     }
   
     @media screen and (min-width: 768px) {
-      max-width: 768px;
+      // max-width: 768px;
       background-image: url('../images/tablet/rectangle@1x.jpg');
   
       @media (min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
@@ -46,7 +24,7 @@ $accent-color: #ff6b01;
     }
   
     @media screen and (min-width: 1024px) {
-      max-width: 1024px;
+      // max-width: 1024px;
       background-image: url('../images/desktop/rectangle@1x.jpg');
   
       @media (min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
@@ -54,13 +32,19 @@ $accent-color: #ff6b01;
       }
     }
   }
+
+.header__container {
+  height: 230px;
+  margin: 0 auto;
+   background: rgba(0, 0, 0, 0.56);
+}
   
 .wrapper {
     display: flex;
     align-items: baseline;
-    padding-left: 1px;
-    padding-top: 46px;
-    margin-bottom: 32px;
+    margin-top: 46px;
+    margin-bottom: 37px;
+    height: 45px;
   
     @media screen and (min-width: 768px) {
       padding-left: -1px;
