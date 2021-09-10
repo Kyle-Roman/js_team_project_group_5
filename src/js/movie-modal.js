@@ -1,5 +1,6 @@
 import ApiService from './api-service';
 import modalMovieTpl from '../templates/modal-markup.hbs';
+import render from './render';
 import refs from './refs';
 
 const apiService = new ApiService();
@@ -14,8 +15,10 @@ window.addEventListener('keydown', closeModalWindowOnEsc);
 
 async function getInfoAndRenderMarkup(id) {
   try {
-    const film = await apiService.fetchMovieById(id);
-    filmField.innerHTML = modalMovieTpl(film);
+    // const film = await apiService.fetchMovieById(id);
+    // filmField.innerHTML = modalMovieTpl(film);
+    const movie = await apiService.fetchMovieById2(id);
+    render('#film-info', modalMovieTpl, movie, 1);
   } catch {
     return console.error();
   }

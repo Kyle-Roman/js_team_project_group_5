@@ -76,7 +76,7 @@ function fetchTrendingMovies(e) {
   });
 }
 
-fetchTrendingMovies();
+// fetchTrendingMovies();
 
 function appendMoviesMarkup(movie) {
   refs.gallery.insertAdjacentHTML('beforeend', moviesTpl(movie));

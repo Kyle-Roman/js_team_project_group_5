@@ -11,3 +11,5 @@ import './js/team-modal';
 import './js/local-storage';
 import './js/loader';
 import './js/notifications';
+import './js/trending-re';
+import './js/init';
