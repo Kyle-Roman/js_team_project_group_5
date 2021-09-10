@@ -1,25 +1,25 @@
-{{#each this}}
-
+  {{#if title}}
   <li class='wow animate__fadeInUp card__item list' title='{{title}}'>
     <article class='card'>
       <a href='' class='card__link link'>
         <div class='card-img-container'>
-          <img src='{{posterURL}}' alt='{{title}}' data-id='{{id}}' class='card__image' />
-
+          {{#if backdrop_path}}
+          <img src='https://image.tmdb.org/t/p/w500/{{poster_path}}' alt='{{title}}' data-id='{{id}}' class='card__image' />
+          {{else}}
+          <img src='https://martialartsplusinc.com/wp-content/uploads/2017/04/default-image.jpg' alt='{{title}}' data-id='{{id}}' class='card__image' />
+          {{/if}}
         </div>
-
         <div class='card__description'>
           <div class='card-name__container'>
             <h2 class='card__name'>{{title}}</h2>
           </div>
 
-          <p class='card__info'>{{genres}}
+          <p class='card__info'>{{genre_ids}}
             |
             {{release_date}}
-
           </p>
         </div>
       </a>
     </article>
   </li>
-{{/each}}
+  {{/if}}
