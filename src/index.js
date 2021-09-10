@@ -13,3 +13,5 @@ import './js/loader';
 import './js/notifications';
 import './js/trending-re';
 import './js/init';
+import './js/pagination';
+import './js/header';
