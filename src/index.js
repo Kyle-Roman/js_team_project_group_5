@@ -5,3 +5,4 @@ import './js/team-modal';
 import './js/local-storage';
 import './js/loader';
 import './js/pagination';
+import './js/header';
