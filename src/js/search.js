@@ -1,12 +1,10 @@
 import MovieApiService from './api-service';
 import Notification from './notifications';
-// import movieCardTpl from '../templates/movie-card.hbs';
-import { processResponse, renderMovies } from './render';
+import { render } from './render';
 
 import 'animate.css';
 
 const formRef = document.querySelector('#search-form');
-// const galleryRef = document.querySelector('#gallery');
 
 formRef.addEventListener('submit', onSubmit);
 
@@ -18,8 +16,13 @@ async function onSubmit(event) {
 
   try {
     const movies = await searchMovies(event.currentTarget.elements.search.value);
-    const moviesProcessed = processResponse(movies);
-    renderMovies(moviesProcessed);
+    console.log(movies);
+    if (movies.results.length === 0) {
+      notify.notFound();
+      return;
+    }
+
+    render(movies, 'common');
   } catch (e) {
     console.log(e);
   }
