@@ -1,4 +1,5 @@
 import MovieApiService from './api-service';
+import Notification from './notifications';
 import movieCardTpl from '../templates/movie-card.hbs';
 
 import 'animate.css';
@@ -9,18 +10,23 @@ const galleryRef = document.querySelector('#gallery');
 formRef.addEventListener('submit', onSubmit);
 
 const apiService = new MovieApiService();
+const notify = new Notification();
 
 async function onSubmit(event) {
   event.preventDefault();
 
-  const movies = await searchMovies(event.currentTarget.elements.search.value);
-  const moviesProcessed = processResponse(movies);
-  renderMovies(moviesProcessed);
+  try {
+    const movies = await searchMovies(event.currentTarget.elements.search.value);
+    const moviesProcessed = processResponse(movies);
+    renderMovies(moviesProcessed);
+  } catch (e) {
+    console.log(e);
+  }
 }
 
 async function searchMovies(searchQuery, page) {
   if (searchQuery === '') {
-    return;
+    return notify.emptyQuery();
   }
 
   if (searchQuery !== apiService.query) {
@@ -32,12 +38,16 @@ async function searchMovies(searchQuery, page) {
 
   try {
     return await apiService.fetchMovieByQuery(searchQuery);
-  } catch (error) {
-    console.log(error);
+  } catch (e) {
+    console.log(e);
+    notify.serverError();
   }
 }
 
 function processResponse(movies) {
+  if (movies.results.length === 0) {
+    notify.notFound();
+  }
   const IMAGE_BASE_URL = localStorage.getItem('img_base_url');
   const genresList = JSON.parse(localStorage.getItem('genres')).genres;
 
