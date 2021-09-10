@@ -24,11 +24,17 @@
       <tr>
         <td class='left-part'>Genre</td>
         <td class='right-part'>
-          <div>{{#each genres}}
+          <div>
+            {{#each genres}}
+              {{#unless @last}}<span>{{name}}, </span>{{/unless}}
+              {{#if @last}}<span>{{name}}</span>{{/if}}
+            {{/each}}
+          </div>
+          {{!-- <div>{{#each genres}}
               {{#unless @last}}<span>{{this}}, </span>{{/unless}}
               {{#if @last}}<span>{{this}}</span>{{/if}}
             {{/each}}
-          </div>
+          </div> --}}
         </td>
       </tr>
     </table>

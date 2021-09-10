@@ -6,3 +6,5 @@ import './js/local-storage';
 import './js/loader';
 import './js/pagination';
 import './js/notifications';
+import './js/trending-re';
+import './js/init';
