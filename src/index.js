@@ -1,3 +1,9 @@
+history.scrollRestoration = 'manual';
+
+$(window).on('beforeunload', function () {
+  $(window).scrollTop(0);
+});
+
 import './js/search';
 import './sass/main.scss';
 import './js/refs';
