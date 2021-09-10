@@ -15,7 +15,7 @@
 <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon" />
 </head>
 
-<body>
+<body class= "scroll-off">
   <header class="header header-home">
     <div class="header__container container">
       <!-- <div class="header__container"></div> -->
@@ -67,7 +67,7 @@
   <!-- ===========movie modal window =========-->
   <!-- <button id="btn_modal_window">future card</button> -->
   <div class="modal wow animate__zoomIn" id="myModal">
-    <div class="modal_content">
+    <div class="modal_content wow animate__fadeInDown">
       <button type="button" class="close_modal_window"></button>
       <div class="film-info" id="film-info"></div>
     </div>
@@ -85,7 +85,12 @@
     <!-- GALLERY SECTION -->
     <include src="./partials/gallery.html"></include>
   </main>
+  <main>
+    <ul class="movie-container"></ul>
 
+    <div class="pagination"></div>
+    <script src="./js/pagination.js"></script>
+  </main>
   <!-- FOOTER -->
   <include src="./partials/footer.html"></include>
 

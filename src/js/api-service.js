@@ -44,10 +44,10 @@ export default class ApiService {
     return await response.json();
   }
 
-  // async fetchMovieById(id) {
-  //   const response = await fetch(`${BASE_URL}/movie/${id}?api_key=${API_KEY}`);
-  //   return await response.json();
-  // }
+  async fetchMovieById2(id) {
+    const response = await fetch(`${BASE_URL}/movie/${id}?api_key=${API_KEY}`);
+    return await response.json();
+  }
 
   //================= вариант для стягивания чистых жанров в модалку =======================
   fetchMovieById(id) {
@@ -77,36 +77,35 @@ export default class ApiService {
   }
 }
 
+//================= вариант для пагинации =======================
+// fetchTrends = (page = 1) => {
+//   return fetch(
+//     `${BASE_URL}/movie/popular?api_key=${API_KEY}&language=en-US&page=${page}`
+//   )
+//     .then((r) => {
+//       if (r.ok) {
+//         return r.json();
+//       }
+//       return null;
+//     })
+//     .then((r) => r
 
-  //================= вариант для пагинации =======================
-  // fetchTrends = (page = 1) => {
-  //   return fetch(
-  //     `${BASE_URL}/movie/popular?api_key=${API_KEY}&language=en-US&page=${page}`
-  //   )
-  //     .then((r) => {
-  //       if (r.ok) {
-  //         return r.json();
-  //       }
-  //       return null;
-  //     })
-  //     .then((r) => r
+//     );
+// };
 
-  //     );
-  // };
-
-  // fetchGenresList = () => {
-  //   return fetch(`${BASE_URL}/genre/movie/list?api_key=${API_KEY}&language=en-US`)
-  //     .then((r) => {
-  //       if (r.ok) {
-  //         return r.json();
-  //       }
-  //       return null;
-  //     })
-  //     .then(({ genres }) => {
-  //       let genresList = {};
-  //       for (let genre of genres) {
-  //         genresList[genre.id] = genre.name;
-  //       }
-  //       return genresList;
-  //     });
-  // };
+// fetchGenresList = () => {
+//   return fetch(`${BASE_URL}/genre/movie/list?api_key=${API_KEY}&language=en-US`)
+//     .then((r) => {
+//       if (r.ok) {
+//         return r.json();
+//       }
+//       return null;
+//     })
+//     .then(({ genres }) => {
+//       let genresList = {};
+//       for (let genre of genres) {
+//         genresList[genre.id] = genre.name;
+//       }
+//       return genresList;
+//     });
+// };

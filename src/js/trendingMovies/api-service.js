@@ -1,4 +1,6 @@
 //const Handlebars = require('Handlebars');
+const API_KEY = '838a1c7309b989baab596bfe84b6d2d8';
+const BASE_URL = 'https://api.themoviedb.org/3';
 export default class MoviesApiService {
   constructor() {
     this.searchQuery = '';
@@ -6,34 +8,32 @@ export default class MoviesApiService {
     this.period = 'day';
   }
 
-  fetchMovies() {
-    const API_KEY = '838a1c7309b989baab596bfe84b6d2d8';
-    const BASE_URL = 'https://api.themoviedb.org/3';
-
+  fetchMovies(page = 1) {
     const searchParams = new URLSearchParams({
       api_key: API_KEY,
       page: this.page,
     });
 
-    const url = `${BASE_URL}/trending/movie/${this.period}?${searchParams}`;
+    const url = `${BASE_URL}/trending/movie/${this.period}?api_key=${API_KEY}&language=en-US&page=${page}`;
 
     return fetch(url)
       .then(r => r.json())
       .then(data => {
-        this.incrementPage();
-
-        console.log(data.results);
+        // this.incrementPage();
 
         data.results.forEach(function (element) {
-          console.log(element['release_date'].slice(0, 4));
           const release_date = element['release_date'].slice(0, 4);
           return release_date;
         });
 
-        return data.results;
+        return data;
       });
   }
 
+  async fetchGenres() {
+    const response = await fetch(`${BASE_URL}/genre/movie/list?api_key=${API_KEY}&language=en-US`);
+    return await response.json();
+  }
   incrementPage() {
     this.page += 1;
   }
