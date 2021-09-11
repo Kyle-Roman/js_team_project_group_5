@@ -19,7 +19,23 @@
   <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon" />
 </head>
 
+<body>
+  <include src="./partials/theme-switcher.html"></include>
+
+  <!-- ===========movie modal window =========-->
+  <!-- <button id="btn_modal_window">future card</button> -->
+  <div class="modal wow animate__zoomIn" id="myModal">
+    <div class="modal_content wow animate__fadeInDown">
+      <button type="button" class="close_modal_window"></button>
+      <div class="film-info" id="film-info"></div>
+    </div>
+  </div>
+  </div>
+  <!-- ===========end of modal window =========-->
+
+
 <body class="scroll-off">
+
   <!--LOADER-->
   <include src="./partials/loader.html"></include>
 
@@ -56,7 +72,11 @@
   <a href="#" class="scrollup wow animate__bounce">Наверх</a>
   <script src="./js/scroll_up/scrollUp.js"></script>
   <script src="./js/tooltip/tooltip.js"></script>
+
+  <script src="./js/theme-switcher/theme-switcher.js"></script>
+
   <script src="./js/pagination.js"></script>
+
 </body>
 
 </html>
