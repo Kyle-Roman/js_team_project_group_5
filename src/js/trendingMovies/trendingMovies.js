@@ -1,7 +1,7 @@
 import '../../sass/main.scss';
 import 'animate.css';
 
-import MoviesApiService from '../trendingMovies/api-service';
+import MoviesApiService from './api';
 
 import moviesTpl from '../../templates/movie-card.hbs';
 
@@ -76,7 +76,7 @@ function fetchTrendingMovies(e) {
   });
 }
 
-fetchTrendingMovies();
+// fetchTrendingMovies();
 
 function appendMoviesMarkup(movie) {
   refs.gallery.insertAdjacentHTML('beforeend', moviesTpl(movie));

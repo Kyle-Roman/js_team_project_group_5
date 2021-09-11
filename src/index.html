@@ -1,20 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.0.0/modern-normalize.min.css"
-  integrity="sha512-ISS7cAi1PEhQ8jnbJpJZMd29NlhNj4AWYyLOSp2CE/CsHxTCu+r+t0D2yoJudVrd0/8fTVPUVDzY5Tvli75u/g=="
-  crossorigin="anonymous" />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-<link rel="stylesheet" href="./css/animate.css" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Filmoteka</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.0.0/modern-normalize.min.css"
+    integrity="sha512-ISS7cAi1PEhQ8jnbJpJZMd29NlhNj4AWYyLOSp2CE/CsHxTCu+r+t0D2yoJudVrd0/8fTVPUVDzY5Tvli75u/g=="
+    crossorigin="anonymous" />
+  <link rel="stylesheet" href="./sass/main.scss" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <link rel="stylesheet" href="./css/animate.css" />
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon" />
 </head>
 
-<body class= "scroll-off">
+<body>
+  <include src="./partials/theme-switcher.html"></include>
   <header class="header header-home">
     <div class="header__container container">
       <!-- <div class="header__container"></div> -->
@@ -63,6 +69,7 @@
       </div>
     </div>
   </header>
+
   <!-- ===========movie modal window =========-->
   <!-- <button id="btn_modal_window">future card</button> -->
   <div class="modal wow animate__zoomIn" id="myModal">
@@ -74,32 +81,50 @@
   </div>
   <!-- ===========end of modal window =========-->
 
-  <!--LOADER-->
-  <include src="./partials/loader.html"></include>
 
-  <!-- PAGE HEADER -->
-  <include src="./partials/page-header.html"></include>
+  <body class="scroll-off">
 
-  <main>
-    <!-- GALLERY SECTION -->
-    <include src="./partials/gallery.html"></include>
-  </main>
+    <!--LOADER-->
+    <include src="./partials/loader.html"></include>
 
-  <!-- FOOTER -->
-  <include src="./partials/footer.html"></include>
+    <!-- PAGE HEADER -->
+    <include src="./partials/header.html"></include>
 
-  <script src="./index.js"></script>
-  <script src="./js/movie-modal.js" type="module"></script>
-  <script src="./js/trendingMovies/trendingMovies.js"></script>
+    <main>
 
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
-  <script>
-    new WOW().init();
-  </script>
+      <!-- GALLERY SECTION -->
+      <include src="./partials/gallery.html"></include>
 
-  <a href="#" class="scrollup wow animate__bounce">Наверх</a>
-  <script src="./js/scroll_up/scrollUp.js"></script>
-  <script src="./js/tooltip/tooltip.js"></script>
-</body>
+      <!-- ===========movie modal window =========-->
+      <div class="modal wow animate__zoomIn visually-hidden" id="myModal">
+        <div class="modal_content wow animate__fadeInDown">
+          <button type="button" class="close_modal_window"></button>
+          <div class="film-info" id="film-info"></div>
+        </div>
+      </div>
+      </div>
+      <!-- ===========end of modal window =========-->
+
+      <div class="pagination-buttons"></div>
+    </main>
+    <!-- FOOTER -->
+    <include src="./partials/footer.html"></include>
+
+    <script src="./index.js"></script>
+    <script src="./js/movie-modal.js" type="module"></script>
+    <script src="./js/trendingMovies/trendingMovies.js"></script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+    <script>new WOW().init()</script>
+
+    <a href="#" class="scrollup wow animate__bounce">Наверх</a>
+    <script src="./js/scroll_up/scrollUp.js"></script>
+    <script src="./js/tooltip/tooltip.js"></script>
+
+    <script src="./js/theme-switcher/theme-switcher.js"></script>
+
+    <script src="./js/pagination.js"></script>
+
+  </body>
 
 </html>

@@ -1,8 +1,24 @@
-<img
+{{#if backdrop_path}}
+  <img
+    class='modal-card-poster'
+    src='https://image.tmdb.org/t/p/w500/{{poster_path}}'
+    alt='{{title}}'
+    data-id='{{id}}'
+  />
+{{else}}
+  <img
+    class='modal-card-poster'
+    src='https://martialartsplusinc.com/wp-content/uploads/2017/04/default-image.jpg'
+    alt='{{title}}'
+    data-id='{{id}}'
+  />
+{{/if}}
+
+{{!-- <img
   class='modal-card-poster'
   src='https://image.tmdb.org/t/p/w300/{{poster_path}}'
   alt='{{original_title}}'
-/>
+/> --}}
 <article class='modal-card'>
   <h2 class='modal-card-title'>{{original_title}}</h2>
   <div class='modal-card-information'>
@@ -24,9 +40,9 @@
       <tr>
         <td class='left-part'>Genre</td>
         <td class='right-part'>
-          <div>{{#each genres}}
-              {{#unless @last}}<span>{{this}}, </span>{{/unless}}
-              {{#if @last}}<span>{{this}}</span>{{/if}}
+          <div>
+            {{#each genres}}
+              {{#if @last}}<span>{{name}}</span>{{else}}<span>{{name}}, </span>{{/if}}
             {{/each}}
           </div>
         </td>

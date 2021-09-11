@@ -10,6 +10,7 @@
 
 //COMPONENTS
 //body
+@import "./components/header";
 @import "./components/body";
 //container
 @import "./components/container";
@@ -25,3 +26,5 @@
 @import "./components/loader";
 //pagination
 @import "./components/pagination";
+//theme-switcher
+@import "./theme-switcher/theme-switcer";
