@@ -1,29 +1,53 @@
-<img
+{{#if backdrop_path}}
+  <img
+    class='modal-card-poster'
+    src='https://image.tmdb.org/t/p/w500/{{poster_path}}'
+    alt='{{title}}'
+    data-id='{{id}}'
+  />
+{{else}}
+  <img
+    class='modal-card-poster'
+    src='https://martialartsplusinc.com/wp-content/uploads/2017/04/default-image.jpg'
+    alt='{{title}}'
+    data-id='{{id}}'
+  />
+{{/if}}
+
+{{!-- <img
   class='modal-card-poster'
   src='https://image.tmdb.org/t/p/w300/{{poster_path}}'
   alt='{{original_title}}'
-/>
+/> --}}
 <article class='modal-card'>
   <h2 class='modal-card-title'>{{original_title}}</h2>
   <div class='modal-card-information'>
-    <ul class='left-part list'>
-      <li>Vote / Votes</li>
-      <li>Popularity</li>
-      <li>Original Title</li>
-      <li>Genre</li>
-    </ul>
-    <ul class='right-part list'>
-      <li>
-        <span class='film-vote'>{{this.vote_average}}</span>
-        <span class='left-part'> / </span>
-        <span class='film-votes'>{{this.vote_count}}</span>
-      </li>
-      <li>{{this.popularity}}</li>
-      <li class='film-original-title'>{{this.original_title}}</li>
-      <li class='film-genres'>
-        {{genres}}
-      </li>
-    </ul>
+    <table>
+      <tr>
+        <td class='left-part'>Vote / Votes</td>
+        <td class='right-part'><span class='film-vote'>{{this.vote_average}}</span>
+          /
+          <span class='film-votes'>{{this.vote_count}}</span></td>
+      </tr>
+      <tr>
+        <td class='left-part'>Popularity</td>
+        <td class='right-part'>{{this.popularity}}</td>
+      </tr>
+      <tr>
+        <td class='left-part'>Original Title</td>
+        <td class='right-part'>{{this.original_title}}</td>
+      </tr>
+      <tr>
+        <td class='left-part'>Genre</td>
+        <td class='right-part'>
+          <div>
+            {{#each genres}}
+              {{#if @last}}<span>{{name}}</span>{{else}}<span>{{name}}, </span>{{/if}}
+            {{/each}}
+          </div>
+        </td>
+      </tr>
+    </table>
   </div>
   <h3 class='about-title'>About</h3>
   <p class='about-text'>{{overview}}</p>
