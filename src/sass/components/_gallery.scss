@@ -76,14 +76,13 @@
 }
 
 .card__link {
-  pointer-events: none;
+  //pointer-events: none;
   display: flex;
   flex-direction: column;
 
   transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
-  transition: background 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background 250ms cubic-bezier(0.4, 0, 0.2, 1), transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover,
   &:focus {

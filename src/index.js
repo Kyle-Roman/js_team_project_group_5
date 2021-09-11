@@ -5,7 +5,6 @@ $(window).on('beforeunload', function () {
 });
 
 import './js/search';
-import './sass/main.scss';
 import './js/refs';
 import './js/team-modal';
 import './js/local-storage';
@@ -13,3 +12,7 @@ import './js/loader';
 import './js/notifications';
 import './js/trending-re';
 import './js/init';
+import './js/pagination';
+// import './js/header';
+
+import './sass/main.scss';
