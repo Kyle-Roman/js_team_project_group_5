@@ -1,30 +1,14 @@
-/* GENERAL */
-@import url("https://fonts.googleapis.com/css?family=Rubik");
-.credit {
-    position: fixed;
-    right: 2rem;
-    bottom: 2rem;
-    color: white;
-}
-.credit a {
-    color: inherit;
-}
 body {
-    margin: 0;
-    padding: 0;
-    font-family: "Rubik", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
-        "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    background-color: #fff;
 }
 .body {
     position: relative;
-    width: 100vw;
-    height: 100vh;
     background-color: #fff;
     overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: background-color 0.1s;
+    transition: background-color 0.5s;
 }
 /* Main Circle */
 .main-circle {
@@ -49,43 +33,6 @@ body {
     border-radius: 40px;
     display: flex;
     flex-direction: column;
-}
-.swipe {
-    width: 40%;
-    height: 0.25rem;
-    background-color: black;
-    opacity: 0.15;
-    border-radius: 10px;
-    margin: 0.5rem auto;
-}
-
-/* Top */
-.menu {
-    /*   background-color: blue; */
-    font-size: 80%;
-    opacity: 0.4;
-    padding: 0.8rem 1.8rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.icons {
-    display: flex;
-    margin-top: 0.5rem;
-}
-.battery {
-    width: 0.85rem;
-    height: 0.45rem;
-    background-color: black;
-}
-.network {
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 0 6.8px 7.2px 6.8px;
-    border-color: transparent transparent black transparent;
-    transform: rotate(135deg);
-    margin: 0.12rem 0.5rem;
 }
 
 /* Middle */
@@ -145,11 +92,13 @@ label {
     transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 .names {
+    margin-top: 10px;
+
     font-size: 90%;
     font-weight: bolder;
     width: 65%;
     margin-left: 17.5%;
-    margin-top: 0.5%;
+
     position: absolute;
     display: flex;
     justify-content: space-between;
@@ -157,91 +106,6 @@ label {
 }
 .dark {
     opacity: 0.5;
-}
-.mark {
-    border-radius: 100px;
-    background-color: black;
-}
-.mark {
-    width: 7%;
-    margin: auto;
-    position: relative;
-    height: 0.25rem;
-}
-.mark::before {
-    content: "";
-    position: absolute;
-    width: 0.25rem;
-    height: 100%;
-    left: -70%;
-    opacity: 0.15;
-    background-color: inherit;
-}
-.mark::after {
-    content: "";
-    position: absolute;
-    width: 0.25rem;
-    height: 100%;
-    right: -70%;
-    opacity: 0.15;
-    background-color: inherit;
-}
-
-/* Bottom */
-.skip {
-    padding: 1.5rem 1.8rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.skip p {
-    opacity: 0.55;
-    font-size: 90%;
-    cursor: pointer;
-    transition: all 2s ease;
-}
-.skip p:hover {
-    text-decoration: underline;
-}
-.fab {
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    border-radius: 100%;
-    width: 3rem;
-    height: 3rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    cursor: pointer;
-    transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
-}
-.fab:hover {
-    transform: scale(1.2);
-}
-.arrow {
-    width: 40%;
-    height: 0.1rem;
-    background-color: black;
-}
-.arrow::before {
-    content: "";
-    position: absolute;
-    height: 0.1rem;
-    width: 20%;
-    background-color: inherit;
-    transform: rotate(45deg);
-    right: 26%;
-    top: 42%;
-}
-.arrow::after {
-    content: "";
-    position: absolute;
-    height: 0.1rem;
-    width: 20%;
-    background-color: inherit;
-    transform: rotate(-45deg);
-    right: 26%;
-    bottom: 42%;
 }
 
 /* -------- Switch Styles ------------*/
@@ -260,10 +124,10 @@ label {
     opacity: 0.5;
 }
 /* App */
-[type="checkbox"]:checked + .app .body {
-    background-color: #26242e;
-    color: white;
-}
+// [type="checkbox"]:checked + .app .body {
+//     background-color: #26242e;
+//     color: white;
+// }
 /* Circle */
 [type="checkbox"]:checked + .app .crescent {
     transform: scale(1);
@@ -275,19 +139,17 @@ label {
 [type="checkbox"]:checked + .app .main-circle {
     background: linear-gradient(40deg, #8983f7, #a3dafb 70%);
 }
-/* Fab */
-[type="checkbox"]:checked + .app .fab {
-    background-color: #34323d;
+
+.light-theme {
+    color: $priority-text-color;
+    background-color: $priority-background-color;
+
+    transition: background-color 0.5s;
 }
-[type="checkbox"]:checked + .app .arrow,
-[type="checkbox"]:checked + .app .mark,
-[type="checkbox"]:checked + .app .battery {
-    background-color: white;
-}
-[type="checkbox"]:checked + .app .network {
-    border-color: transparent transparent white transparent;
-}
-[type="checkbox"]:checked + .app .swipe {
-    background-color: #34323d;
-    opacity: 1;
+
+.dark-theme {
+    color: $secondary-text-color;
+    background-color: #26242e;
+
+    transition: background-color 0.5s;
 }
