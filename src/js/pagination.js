@@ -1,8 +1,10 @@
-import ApiService from '../js/trendingMovies/api-service';
+import ApiService from '../js/trendingMovies/api-service.js';
 import moviesTpl from '../templates/movie-card_library.hbs';
 
-const movieContainer = document.querySelector('.pagination ');
-const trendMovieContainer = document.querySelector('.movie-container');
+const paginationContainer = document.querySelector('.pagination ');
+const trendMovieContainer = document.querySelector('.gallery');
+const searchForm = document.querySelector('.js-form');
+
 let page = 1;
 let totalPage = 500;
 const api = new ApiService();
@@ -13,6 +15,33 @@ const genres = api.fetchGenres().then(({ genres }) => {
   }
   return result;
 });
+let query = null;
+searchForm.addEventListener('submit', e => {
+  e.preventDefault();
+  if (query === e.currentTarget.elements[0].value) {
+    return;
+  }
+  query = e.currentTarget.elements[0].value;
+  paginationContainer.innerHTML = '';
+  trendMovieContainer.innerHTML = '';
+  api.fetchMoviesByQuery(query, 1).then(r => {
+    const { total_pages, results } = r;
+    movieTemplate(results).then(result =>
+      trendMovieContainer.insertAdjacentHTML('beforeend', result),
+    );
+    totalPage = total_pages;
+    const paginationButtons = new PaginationButton(totalPage, 7);
+    paginationButtons.render(paginationContainer);
+    paginationButtons.onChange(e => {
+      if (e.target.value === page) {
+        return;
+      }
+      page = e.target.value;
+      upDateMovieByQuery(query, page);
+    });
+  });
+});
+
 const pageNumbers = (total, max, current) => {
   const half = Math.floor(max / 2);
   let to = max;
@@ -126,7 +155,12 @@ function PaginationButton(totalPages, maxPagesVisible = 10, currentPage = 1) {
   });
 
   buttons.set(
-    createAndSetupButton('500', 'end-page', disabled.end(), () => (currentPage = totalPages)),
+    createAndSetupButton(
+      `${totalPage}`,
+      'end-page',
+      disabled.end(),
+      () => (currentPage = totalPages),
+    ),
     btn => (btn.disabled = disabled.end()),
   );
   buttons.set(
@@ -152,7 +186,7 @@ function PaginationButton(totalPages, maxPagesVisible = 10, currentPage = 1) {
   };
 }
 
-const upDateMovie = page => {
+const upDateMovieTrends = page => {
   trendMovieContainer.innerHTML = '';
   api.fetchMovies(page).then(r => {
     const { total_pages, results } = r;
@@ -162,16 +196,20 @@ const upDateMovie = page => {
     totalPage = total_pages;
   });
 };
-upDateMovie();
+upDateMovieTrends();
 
 const paginationButtons = new PaginationButton(totalPage, 7);
-paginationButtons.render();
+paginationButtons.render(paginationContainer);
 paginationButtons.onChange(e => {
   if (e.target.value === page) {
     return;
   }
   page = e.target.value;
-  upDateMovie(e.target.value);
+  if (query) {
+    upDateMovieByQuery(query, page);
+    return;
+  }
+  upDateMovieTrends(page);
 });
 //запрос за жанрами
 const movieTemplate = movies => {
@@ -187,5 +225,13 @@ const movieTemplate = movies => {
       }
       return moviesTpl(movie);
     });
+  });
+};
+const upDateMovieByQuery = (query, page) => {
+  trendMovieContainer.innerHTML = '';
+  api.fetchMoviesByQuery(query, page).then(({ results }) => {
+    movieTemplate(results).then(result =>
+      trendMovieContainer.insertAdjacentHTML('beforeend', result),
+    );
   });
 };

@@ -11,7 +11,6 @@ export default class MoviesApiService {
   fetchMovies(page = 1) {
     const searchParams = new URLSearchParams({
       api_key: API_KEY,
-      page: this.page,
     });
 
     const url = `${BASE_URL}/trending/movie/${this.period}?api_key=${API_KEY}&language=en-US&page=${page}`;
@@ -26,6 +25,24 @@ export default class MoviesApiService {
           return release_date;
         });
 
+        return data;
+      });
+  }
+
+  fetchMoviesByQuery(query = '', page = 1) {
+    const searchParams = new URLSearchParams({
+      api_key: API_KEY,
+    });
+
+    const url = `${BASE_URL}/search/movie?api_key=${API_KEY}&language=en-US&query=${query}&page=${page}&include_adult=false`;
+
+    return fetch(url)
+      .then(r => r.json())
+      .then(data => {
+        data.results.forEach(function (element) {
+          const release_date = element['release_date'].slice(0, 4);
+          return release_date;
+        });
         return data;
       });
   }
