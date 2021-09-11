@@ -4,5 +4,5 @@ window.addEventListener('load', () => {
     setTimeout(() => {
         preLoader.remove();
         $('body').removeClass('scroll-off');
-    }, 1500);
+    }, 1000);
 })

@@ -1,8 +1,11 @@
-import ApiService from '../js/trendingMovies/api-service';
+import ApiService from './trendingMovies/api';
 import moviesTpl from '../templates/movie-card_library.hbs';
+import API from '../js/api-service';
 
 const movieContainer = document.querySelector('.pagination ');
-const trendMovieContainer = document.querySelector('.movie-container');
+const trendMovieContainer = document.querySelector('.gallery');
+const paginationWrapper = document.querySelector('.pagination-buttons')
+
 let page = 1;
 let totalPage = 500;
 const api = new ApiService();
@@ -13,6 +16,7 @@ const genres = api.fetchGenres().then(({ genres }) => {
   }
   return result;
 });
+
 const pageNumbers = (total, max, current) => {
   const half = Math.floor(max / 2);
   let to = max;
@@ -57,9 +61,9 @@ function PaginationButton(totalPages, maxPagesVisible = 10, currentPage = 1) {
     end: () => pages.slice(-1)[0] === totalPages,
     next: () => currentPage === totalPages,
   };
-  const frag = document.createDocumentFragment();
+  // const frag = document.createDocumentFragment();
   const paginationButtonContainer = document.createElement('div');
-  paginationButtonContainer.className = 'pagination-buttons';
+  // paginationButtonContainer.className = 'pagination-buttons';
 
   const createAndSetupButton = (label = '', cls = '', disabled = false, handleClick) => {
     const buttonElement = document.createElement('button');
@@ -126,7 +130,7 @@ function PaginationButton(totalPages, maxPagesVisible = 10, currentPage = 1) {
   });
 
   buttons.set(
-    createAndSetupButton('500', 'end-page', disabled.end(), () => (currentPage = totalPages)),
+    createAndSetupButton('100', 'end-page', disabled.end(), () => (currentPage = totalPages)),
     btn => (btn.disabled = disabled.end()),
   );
   buttons.set(
@@ -134,12 +138,12 @@ function PaginationButton(totalPages, maxPagesVisible = 10, currentPage = 1) {
     btn => (btn.disabled = disabled.next()),
   );
 
-  buttons.forEach((_, btn) => frag.appendChild(btn));
-  paginationButtonContainer.appendChild(frag);
+  buttons.forEach((_, btn) => paginationWrapper.appendChild(btn));
+  // paginationWrapper.appendChild(frag);
 
-  this.render = (container = document.body) => {
-    container.appendChild(paginationButtonContainer);
-  };
+  // this.render = (container = document.body) => {
+  //   container.appendChild(paginationWrapper);
+  // };
 
   this.update = (newPageNumber = currentPage) => {
     currentPage = newPageNumber;
@@ -157,15 +161,15 @@ const upDateMovie = page => {
   api.fetchMovies(page).then(r => {
     const { total_pages, results } = r;
     movieTemplate(results).then(result =>
-      trendMovieContainer.insertAdjacentHTML('beforeend', result),
+      trendMovieContainer.insertAdjacentHTML('beforeend', result)
     );
     totalPage = total_pages;
   });
 };
-upDateMovie();
+// upDateMovie();
 
 const paginationButtons = new PaginationButton(totalPage, 7);
-paginationButtons.render();
+
 paginationButtons.onChange(e => {
   if (e.target.value === page) {
     return;
@@ -173,6 +177,7 @@ paginationButtons.onChange(e => {
   page = e.target.value;
   upDateMovie(e.target.value);
 });
+
 //запрос за жанрами
 const movieTemplate = movies => {
   return genres.then(r => {
