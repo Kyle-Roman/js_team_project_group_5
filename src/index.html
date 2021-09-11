@@ -21,6 +21,54 @@
 
 <body>
   <include src="./partials/theme-switcher.html"></include>
+  <header class="header header-home">
+    <div class="header__container container">
+      <!-- <div class="header__container"></div> -->
+      <div class="wrapper">
+        <img class="icon-film" src="./images/icons/heart.svg" alt="film frame" />
+        <h1 class="logo-img visually-hidden">Filmoteka</h1>
+        <a class="logo link" id="logo" href="#">Filmoteka</a>
+        <nav class="navigation">
+          <ul class="menu__list list">
+            <li class="menu__item">
+              <!-- Вешаем класс current через js для подчеркивания текущей страницы -->
+              <button class="menu__link js-menu__button current" id="home" type="button">Home</button>
+            </li>
+            <li class="menu__item">
+              <!-- Вешаем класс current через js для подчеркивания текущей страницы -->
+              <button class="menu__link js-menu__button" id="my-library" type="button" data-modal-auth-open>
+                My library
+              </button>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="markup-wrapper">
+        <!-- Динамически рендерим разметку хэдэра для Home -->
+        <form class="search-form">
+          <label for="searchQuery" class="sr-only"></label>
+          <input class="search" type="text" name="query" id="searchQuery" placeholder="Movie search"
+            autocomplete="off" />
+          <button class="button-search" type="submit"></button>
+        </form>
+        <!-- Динамически рендерим разметку хэдэра для My library -->
+        <div class="btn-container__library visually-hidden">
+          <ul class="btn-list list">
+            <li class="btn-item">
+              <button class="btn-liba button-watched watched-btn-js" id="btn-watched" type="submit">
+                Watched
+              </button>
+            </li>
+            <li class="btn-item">
+              <button class="btn-liba button-queue queue-btn-js" id="btn-queue" type="submit">
+                Queue
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
 
   <!-- ===========movie modal window =========-->
   <!-- <button id="btn_modal_window">future card</button> -->
@@ -34,49 +82,49 @@
   <!-- ===========end of modal window =========-->
 
 
-<body class="scroll-off">
+  <body class="scroll-off">
 
-  <!--LOADER-->
-  <include src="./partials/loader.html"></include>
+    <!--LOADER-->
+    <include src="./partials/loader.html"></include>
 
-  <!-- PAGE HEADER -->
-  <include src="./partials/header.html"></include>
+    <!-- PAGE HEADER -->
+    <include src="./partials/header.html"></include>
 
-  <main>
+    <main>
 
-    <!-- GALLERY SECTION -->
-    <include src="./partials/gallery.html"></include>
+      <!-- GALLERY SECTION -->
+      <include src="./partials/gallery.html"></include>
 
-    <!-- ===========movie modal window =========-->
-    <div class="modal wow animate__zoomIn visually-hidden" id="myModal">
-      <div class="modal_content wow animate__fadeInDown">
-        <button type="button" class="close_modal_window"></button>
-        <div class="film-info" id="film-info"></div>
+      <!-- ===========movie modal window =========-->
+      <div class="modal wow animate__zoomIn visually-hidden" id="myModal">
+        <div class="modal_content wow animate__fadeInDown">
+          <button type="button" class="close_modal_window"></button>
+          <div class="film-info" id="film-info"></div>
+        </div>
       </div>
-    </div>
-    </div>
-    <!-- ===========end of modal window =========-->
+      </div>
+      <!-- ===========end of modal window =========-->
 
-    <div class="pagination-buttons"></div>
-  </main>
-  <!-- FOOTER -->
-  <include src="./partials/footer.html"></include>
+      <div class="pagination-buttons"></div>
+    </main>
+    <!-- FOOTER -->
+    <include src="./partials/footer.html"></include>
 
-  <script src="./index.js"></script>
-  <script src="./js/movie-modal.js" type="module"></script>
-  <script src="./js/trendingMovies/trendingMovies.js"></script>
+    <script src="./index.js"></script>
+    <script src="./js/movie-modal.js" type="module"></script>
+    <script src="./js/trendingMovies/trendingMovies.js"></script>
 
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
-  <script>new WOW().init()</script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+    <script>new WOW().init()</script>
 
-  <a href="#" class="scrollup wow animate__bounce">Наверх</a>
-  <script src="./js/scroll_up/scrollUp.js"></script>
-  <script src="./js/tooltip/tooltip.js"></script>
+    <a href="#" class="scrollup wow animate__bounce">Наверх</a>
+    <script src="./js/scroll_up/scrollUp.js"></script>
+    <script src="./js/tooltip/tooltip.js"></script>
 
-  <script src="./js/theme-switcher/theme-switcher.js"></script>
+    <script src="./js/theme-switcher/theme-switcher.js"></script>
 
-  <script src="./js/pagination.js"></script>
+    <script src="./js/pagination.js"></script>
 
-</body>
+  </body>
 
 </html>
