@@ -3,16 +3,16 @@
         animation-duration: 1000ms;
         animation-iteration-count: 2;
 
-        width: 40px;
-        height: 40px;
+        width: 60px;
+        height: 60px;
         //opacity: 0.3;
         position: fixed;
-        bottom: 290px;
-        right: 26px;
+        bottom: 200px;
+        right: 68px;
         display: none;
         text-indent: -9999px;
 
-        background: url(../images/icons/top-arrow-icon_new.png) no-repeat;
+        background: url(../images/icons/top-arrow-icon.png) no-repeat;
 
         transition: 250ms cubic-bezier(0.4, 0, 0.2, 1), transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
@@ -25,6 +25,7 @@
 
 @media screen and (min-width: 1440px) {
     .scrollup {
-        right: 100px;
+        right: 220px;
+        bottom: 200px;
     }
 }
