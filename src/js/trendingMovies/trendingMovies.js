@@ -1,7 +1,7 @@
 import '../../sass/main.scss';
 import 'animate.css';
 
-import MoviesApiService from '../trendingMovies/api-service';
+import MoviesApiService from './api';
 
 import moviesTpl from '../../templates/movie-card.hbs';
 
