@@ -1,22 +1,30 @@
-.scrollup {
-    animation-duration: 1000ms;
-    animation-iteration-count: 2;
+@media screen and (min-width: 768px) {
+    .scrollup {
+        animation-duration: 1000ms;
+        animation-iteration-count: 2;
 
-    width: 40px;
-    height: 40px;
-    //opacity: 0.3;
-    position: fixed;
-    bottom: 100px;
-    right: 100px;
-    display: none;
-    text-indent: -9999px;
+        width: 40px;
+        height: 40px;
+        //opacity: 0.3;
+        position: fixed;
+        bottom: 290px;
+        right: 26px;
+        display: none;
+        text-indent: -9999px;
 
-    background: url(../images/icons/top-arrow-icon.jpg) no-repeat;
+        background: url(../images/icons/top-arrow-icon_new.png) no-repeat;
 
-    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1), transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+        transition: 250ms cubic-bezier(0.4, 0, 0.2, 1), transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
-    &:hover,
-    &:focus {
-        transform: scale(1.1);
+        &:hover,
+        &:focus {
+            transform: scale(1.1);
+        }
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .scrollup {
+        right: 100px;
     }
 }
