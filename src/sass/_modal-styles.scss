@@ -1,5 +1,5 @@
 .modal {
-  display: none;
+  display: flex;
   position: fixed;
   justify-content: center;
   align-items: center;
@@ -30,13 +30,14 @@
     padding: 40px 30px;
     display: flex;
     width: 618px;
-    height: 562px;
+    height: auto;
+    // height: 562px;
     margin: 0 auto;
   }
   @media screen and (min-width: 1024px) {
     padding: 50px 30px;
     width: 882px;
-    height: 568px;
+    height: auto;
     margin: 0 auto;
   }
 }
