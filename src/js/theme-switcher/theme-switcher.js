@@ -7,8 +7,6 @@ const Theme = {
   DARK: 'dark-theme',
 };
 
-/* При первой загрузке страницы, у боди должен быть класс light-theme. */
-
 if (localStorage.getItem('Theme') === null) {
   refs.body.classList.add('light-theme');
   refs.checkboxBody.classList.add('light-theme');
@@ -20,7 +18,7 @@ function onChangingPositionThemeSwitchToggle() {
     refs.main.classList.remove('light-theme');
     refs.checkboxBody.classList.remove('light-theme');
 
-    /* Добавляется на элемент body класс dark-theme */
+    /* Добавляется на элемент main класс dark-theme */
     refs.main.classList.add('dark-theme');
     refs.checkboxBody.classList.add('dark-theme');
     /* Удаление предыдущих настроек темы из localStorage */
@@ -33,7 +31,7 @@ function onChangingPositionThemeSwitchToggle() {
     refs.main.classList.remove('dark-theme');
     refs.checkboxBody.classList.remove('dark-theme');
 
-    /* Добавляется на элемент body класс light-theme */
+    /* Добавляется на элемент main класс light-theme */
     refs.main.classList.add('light-theme');
     refs.checkboxBody.classList.add('light-theme');
 
@@ -55,7 +53,7 @@ if (localStorage.getItem('Theme') === 'DARK') {
   refs.main.classList.remove('light-theme');
   refs.checkboxBody.classList.remove('light-theme');
 
-  /* Добавляется на элемент body класс dark-theme */
+  /* Добавляется на элемент main класс dark-theme */
   refs.main.classList.add('dark-theme');
   refs.checkboxBody.classList.add('dark-theme');
 } else if (localStorage.getItem('Theme') === 'LIGHT') {
@@ -65,7 +63,7 @@ if (localStorage.getItem('Theme') === 'DARK') {
   refs.main.classList.remove('dark-theme');
   refs.checkboxBody.classList.remove('dark-theme');
 
-  /* Добавляется на элемент body класс dark-theme */
+  /* Добавляется на элемент main класс dark-theme */
   refs.main.classList.add('light-theme');
   refs.checkboxBody.classList.add('light-theme');
 }
