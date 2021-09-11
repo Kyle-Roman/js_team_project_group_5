@@ -1,4 +1,6 @@
 import MovieApiService from './api-service';
+import modalCard from '../templates/modal-markup.hbs';
+import dataList from '../js/pre-render';
 
 const apiService = new MovieApiService();
 
@@ -20,4 +22,38 @@ export default async function setBaseConfig() {
       console.log(error);
     }
   }
+}
+
+const modal = document.getElementById('myModal');
+modal.addEventListener('click', myLibrarySet);
+
+function myLibrarySet(e) {
+  const modalButton = e.target;
+
+  if (modalButton.id === 'watched-button') {
+    // const movieId = modalCard.id;
+    addToWatched();
+    // apiService.fetchMovieById2(movieId).then(console.log(movieId))
+
+    // addToWatched(movieId);
+  } else if (modalButton.id === 'queue-button') {
+    addToQueue();
+  }
+};
+
+
+
+
+function addToWatched(id) {
+
+  // apiService.id = id;
+  // const movie = this.dataset.id;
+  console.log(id);
+  // localStorage.setItem('watched', movie)
+
+}
+
+function addToQueue(e) {
+  localStorage.setItem('queue', apiService.id)
+  console.log("queue");
 }
