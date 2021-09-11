@@ -61,9 +61,9 @@ function PaginationButton(totalPages, maxPagesVisible = 10, currentPage = 1) {
     end: () => pages.slice(-1)[0] === totalPages,
     next: () => currentPage === totalPages,
   };
-  const frag = document.createDocumentFragment();
+  // const frag = document.createDocumentFragment();
   const paginationButtonContainer = document.createElement('div');
-  paginationButtonContainer.className = 'pagination-buttons';
+  // paginationButtonContainer.className = 'pagination-buttons';
 
   const createAndSetupButton = (label = '', cls = '', disabled = false, handleClick) => {
     const buttonElement = document.createElement('button');
@@ -138,8 +138,8 @@ function PaginationButton(totalPages, maxPagesVisible = 10, currentPage = 1) {
     btn => (btn.disabled = disabled.next()),
   );
 
-  buttons.forEach((_, btn) => frag.appendChild(btn));
-  paginationWrapper.appendChild(frag);
+  buttons.forEach((_, btn) => paginationWrapper.appendChild(btn));
+  // paginationWrapper.appendChild(frag);
 
   // this.render = (container = document.body) => {
   //   container.appendChild(paginationWrapper);
@@ -169,7 +169,7 @@ const upDateMovie = page => {
 // upDateMovie();
 
 const paginationButtons = new PaginationButton(totalPage, 7);
-// paginationButtons.render();
+
 paginationButtons.onChange(e => {
   if (e.target.value === page) {
     return;
@@ -177,6 +177,7 @@ paginationButtons.onChange(e => {
   page = e.target.value;
   upDateMovie(e.target.value);
 });
+
 //запрос за жанрами
 const movieTemplate = movies => {
   return genres.then(r => {
