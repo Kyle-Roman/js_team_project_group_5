@@ -1,45 +1,43 @@
-<header class="header header-home">
+<header class="header header-home container">
   <div class="header__container">
-    <div class="header__container">
-      <div class="wrapper">
-        <img class="icon-film" src="./images/icons/logo.svg" alt="film frame" />
-        <h1 class="logo-img visually-hidden">Filmoteka</h1>
-        <a class="logo link" id="logo" href="index.html">Filmoteka</a>
-        <nav class="navigation">
-          <ul class="menu__list list">
-            <li class="menu__item">
-              <a class="menu__link js-menu__button current link" id="home" href="index.html">
-                Home
-              </a>
-            </li>
-            <li class="menu__item">
-              <a class="menu__link js-menu__button link" id="my-library" href="" data-modal-auth-open>
-                My library
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-      <div class="markup-wrapper">
-        <form class="search-form" id="search-form">
-          <input type="text" name="search" autocomplete="off" placeholder="Search movies" class="search" />
-          <button type="submit" id="search-button" class="button-search"></button>
-        </form>
-        <!-- Динамически рендерим разметку хэдэра для My library -->
-        <div class="btn-container__library visually-hidden">
-          <ul class="btn-list list">
-            <li class="btn-item">
-              <button class="btn-liba button-watched watched-btn-js" id="btn-watched" type="submit">
-                Watched
-              </button>
-            </li>
-            <li class="btn-item">
-              <button class="btn-liba button-queue queue-btn-js" id="btn-queue" type="submit">
-                queue
-              </button>
-            </li>
-          </ul>
-        </div>
+    <div class="wrapper">
+      <img class="icon-film" src="./images/icons/logo.svg" alt="film frame" />
+      <h1 class="logo-img visually-hidden">Filmoteka</h1>
+      <a class="logo link" id="logo" href="index.html">Filmoteka</a>
+      <nav class="navigation">
+        <ul class="menu__list list">
+          <li class="menu__item">
+            <a class="menu__link js-menu__button current link" id="home" href="index.html">
+              Home
+            </a>
+          </li>
+          <li class="menu__item">
+            <a class="menu__link js-menu__button link" id="my-library" href="" data-modal-auth-open>
+              My library
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <div class="markup-wrapper">
+      <form class="search-form" id="search-form">
+        <input type="text" name="search" autocomplete="off" placeholder="Search movies" class="search" />
+        <button type="submit" id="search-button" class="button-search"></button>
+      </form>
+      <!-- Динамически рендерим разметку хэдэра для My library -->
+      <div class="btn-container__library visually-hidden">
+        <ul class="btn-list list">
+          <li class="btn-item">
+            <button class="btn-liba button-watched watched-btn-js" id="btn-watched" type="submit">
+              Watched
+            </button>
+          </li>
+          <li class="btn-item">
+            <button class="btn-liba button-queue queue-btn-js" id="btn-queue" type="submit">
+              queue
+            </button>
+          </li>
+        </ul>
       </div>
     </div>
 </header>
