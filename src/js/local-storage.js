@@ -43,19 +43,18 @@ function myLibrarySet(e) {
   const movieId = localStorage.getItem('movie_id');
 
   if (modalButton.id === 'watched-button') {
-    // movieSetCheck();
-    watchedSet.push(movieId.toString());
-    localStorage.setItem('watched', JSON.stringify(watchedSet));
-
+    if (watchedSet.includes(movieId)) {
+      return alert('Allready watched!');
+    } else {
+      watchedSet.push(movieId.toString());
+      localStorage.setItem('watched', JSON.stringify(watchedSet));
+    }
   } else if (modalButton.id === 'queue-button') {
-
-    queuedSet.push(movieId.toString());
-    localStorage.setItem('queued', JSON.stringify(queuedSet))
-  }
-};
-
-// function movieSetCheck() {
-//   if (watchedSet.contains(movieId)) {
-//     console.log('has it');
-//   }
-// }
+    if (queuedSet.includes(movieId)) {
+      return alert('Allready in the queue!');
+    } else {
+      queuedSet.push(movieId.toString());
+      localStorage.setItem('queued', JSON.stringify(queuedSet))
+    }
+  };
+}
