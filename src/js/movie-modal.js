@@ -81,7 +81,7 @@ function myLibrarySet(e) {
 
   } else if (modalButton.id === 'queue-button') {
 
-    watchedSet.push(movieId.toString());
+    queuedSet.push(movieId.toString());
     localStorage.setItem('queued', JSON.stringify(queuedSet))
   }
 };
