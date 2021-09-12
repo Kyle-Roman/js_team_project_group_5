@@ -1,4 +1,4 @@
-import getTrending from './trending-re';
+import { getTrending } from './search-trending';
 import setBaseConfig from './local-storage';
 
 async function Initialize() {
