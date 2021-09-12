@@ -13,6 +13,7 @@ import './js/notifications';
 import './js/trending-re';
 import './js/init';
 import './js/pagination';
-// import './js/header';
+// import './js/theme-switcher/theme-switcher';
+import './js/movie-modal';
 
 import './sass/main.scss';
