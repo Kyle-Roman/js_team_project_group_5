@@ -1,0 +1,143 @@
+@media screen and (min-width: 768px) {
+    .body-switcher {
+        //position: relative;
+        margin-left: auto;
+        width: 200px;
+
+        background-color: #fff;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: background-color 0.5s;
+    }
+
+    .switcher-content {
+        position: absolute;
+
+        display: flex;
+        flex-direction: column;
+        margin: auto;
+        text-align: center;
+        width: 18%;
+        transform: translateY(5%);
+    }
+
+    .crescent {
+        position: absolute;
+        border-radius: 100%;
+        right: 0;
+        width: 6rem;
+        height: 6rem;
+        background: white;
+        transform: scale(0);
+        transform-origin: top right;
+        transition: transform 0.6s cubic-bezier(0.645, 0.045, 0.355, 1);
+    }
+
+    .heading {
+        color: $secondary-text-color;
+
+        font-size: 140%;
+        font-weight: bolder;
+    }
+
+    .switcher-label,
+    .toggle {
+        height: 1.8rem;
+        border-radius: 100px;
+    }
+
+    .switcher-label {
+        position: relative;
+        right: -50%;
+        width: 10%;
+        background-color: $accent-color;
+        border-radius: 100px;
+
+
+        cursor: pointer;
+    }
+    .toggle {
+        position: absolute;
+        width: 50%;
+        background-color: #fff;
+        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.15);
+        transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .names {
+        margin-top: 10px;
+
+        font-size: 64%;
+        font-weight: bolder;
+        width: 65%;
+        margin-left: 9.5%;
+
+        position: absolute;
+        display: flex;
+        justify-content: space-between;
+        user-select: none;
+    }
+    .dark {
+        margin-left: 27%;
+
+    //opacity: 0.5;
+}
+
+
+    /* -------- Switch Styles ------------*/
+    [type="checkbox"] {
+        display: none;
+    }
+
+    .light-theme {
+        color: $priority-text-color;
+        background-color: $priority-background-color;
+
+        transition: background-color 0.5s;
+    }
+
+    .dark-theme {
+        color: $secondary-text-color;
+        background-color: #26242e;
+
+        transition: background-color 0.5s;
+    }
+
+    .dark-theme__switcher {
+        color: $secondary-text-color;
+
+        .toggle {
+            transform: translateX(100%);
+            background-color: #34323d;
+        }
+
+        .dark {
+            margin-left: 37%;
+
+            opacity: 1;
+            font-size: 90%;
+        }
+
+    .light {
+        color: $secondary-text-color;
+        //opacity: 0.5;
+        font-size: 90%;
+    }
+      
+    .crescent {
+        transform: scale(1);
+        background: #26242e;
+    }
+
+    .main-circle {
+        background: linear-gradient(40deg, #8983f7, #a3dafb 70%);
+    }
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+    .switcher-label {
+        width: 52%;
+    }
+}

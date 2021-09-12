@@ -5,9 +5,6 @@ import refs from './refs';
 
 const apiService = new ApiService();
 
-const modal = document.getElementById('myModal');
-modal.addEventListener('click', myLibrarySet);
-
 // const modalContent = document.querySelector('.modal_content');
 const filmField = document.querySelector('#film-info');
 const close = document.querySelector('.close_modal_window');
@@ -60,24 +57,31 @@ function onWindowClick(ev) {
     closeModalWindow();
   }
 }
+// -----------Local Storage----------------
+
+const modal = document.getElementById('myModal');
+modal.addEventListener('click', myLibrarySet);
+
 
 function myLibrarySet(e) {
+  // localStorage.clear()
   const modalButton = e.target;
   const movieId = localStorage.getItem('movie_id');
 
   let watchedSet = [];
   let queuedSet = [];
 
+  watchedSet = JSON.parse(localStorage.getItem('watched')) || [];
+  queuedSet = JSON.parse(localStorage.getItem('queued')) || [];
+
   if (modalButton.id === 'watched-button') {
-    localStorage.getItem('watched', JSON.parse(watchedSet));
-    watchedSet.push(movieId);
 
+    watchedSet.push(movieId.toString());
     localStorage.setItem('watched', JSON.stringify(watchedSet));
-    console.log(watchedSet);
-
 
   } else if (modalButton.id === 'queue-button') {
 
-    localStorage.setItem('queue', movieId)
+    queuedSet.push(movieId.toString());
+    localStorage.setItem('queued', JSON.stringify(queuedSet))
   }
 };
