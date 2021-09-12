@@ -21,19 +21,24 @@
 
 <body class="scroll-off">
   <!--LOADER-->
-  <include src="./partials/loader.html"></include>
+  <!-- <include src="./partials/loader.html"></include> -->
 
   <!-- PAGE HEADER -->
   <include src="./partials/header.html"></include>
 
   <main>
-
+ 
     <!-- GALLERY SECTION -->
     <include src="./partials/gallery.html"></include>
+    
+    <!-- LOAD MORE BUTTON -->
+    <include src="./partials/load-more.html"></include>
+
+   
+    
 
     <!-- ===========movie modal window =========-->
-    <!-- <button id="btn_modal_window">future card</button>  -->
-    <div class="modal wow animate__zoomIn" id="myModal">
+    <div class="modal wow animate__zoomIn visually-hidden" id="myModal">
       <div class="modal_content wow animate__fadeInDown">
         <button type="button" class="close_modal_window"></button>
         <div class="film-info" id="film-info"></div>
@@ -41,26 +46,25 @@
     </div>
     </div>
     <!-- ===========end of modal window =========-->
-    <!-- <ul class="movie-container"></ul> -->
+
     <div class="pagination-buttons"></div>
   </main>
   <!-- FOOTER -->
   <include src="./partials/footer.html"></include>
 
+
   <script src="./index.js"></script>
+
   <script src="./js/library/watched-movie.js"></script>
   <script src="./js/movie-modal.js" type="module"></script>
+
   <script src="./js/trendingMovies/trendingMovies.js"></script>
-
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
-  <script>
-    new WOW().init();
-  </script>
-
+  <script>new WOW().init()</script>
   <a href="#" class="scrollup wow animate__bounce">Наверх</a>
   <script src="./js/scroll_up/scrollUp.js"></script>
   <script src="./js/tooltip/tooltip.js"></script>
-  <script src="./js/pagination.js"></script>
+
 </body>
 
 </html>

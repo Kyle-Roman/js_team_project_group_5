@@ -1,4 +1,6 @@
 import MovieApiService from './api-service';
+import modalCard from '../templates/modal-markup.hbs';
+
 
 const apiService = new MovieApiService();
 
@@ -20,4 +22,39 @@ export default async function setBaseConfig() {
       console.log(error);
     }
   }
+}
+
+
+const modal = document.getElementById('myModal');
+modal.addEventListener('click', myLibrarySet);
+
+
+
+function myLibrarySet(e) {
+  // localStorage.clear()
+  const modalButton = e.target;
+
+  let watchedSet = [];
+  let queuedSet = [];
+
+  watchedSet = JSON.parse(localStorage.getItem('watched')) || [];
+  queuedSet = JSON.parse(localStorage.getItem('queued')) || [];
+
+  const movieId = localStorage.getItem('movie_id');
+
+  if (modalButton.id === 'watched-button') {
+    if (watchedSet.includes(movieId)) {
+      return alert('Allready watched!');
+    } else {
+      watchedSet.push(movieId.toString());
+      localStorage.setItem('watched', JSON.stringify(watchedSet));
+    }
+  } else if (modalButton.id === 'queue-button') {
+    if (queuedSet.includes(movieId)) {
+      return alert('Allready in the queue!');
+    } else {
+      queuedSet.push(movieId.toString());
+      localStorage.setItem('queued', JSON.stringify(queuedSet))
+    }
+  };
 }

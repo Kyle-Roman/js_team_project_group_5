@@ -19,6 +19,7 @@ async function getInfoAndRenderMarkup(id) {
     // filmField.innerHTML = modalMovieTpl(film);
     const movie = await apiService.fetchMovieById2(id);
     render('#film-info', modalMovieTpl, movie, 1);
+    localStorage.setItem('movie_id', id)
   } catch {
     return console.error();
   }
@@ -26,11 +27,9 @@ async function getInfoAndRenderMarkup(id) {
 
 async function openModal(ev) {
   ev.preventDefault();
-  // ev.target.nodeName === 'IMG' ||
   if (ev.target.closest('li')) {
     await getInfoAndRenderMarkup(ev.target.closest('li').dataset.id);
-    refs.modal.style.display = 'flex';
-    document.body.classList.add('modal-open');
+    modalToggle();
     refs.modal.classList.add('animated');
     close.addEventListener('click', closeModalWindow);
   }
@@ -38,9 +37,13 @@ async function openModal(ev) {
 }
 
 function closeModalWindow(ev) {
-  refs.modal.style.display = 'none';
-  document.body.classList.remove('modal-open');
+  modalToggle();
   close.removeEventListener('click', closeModalWindow);
+}
+
+function modalToggle() {
+  refs.modal.classList.toggle('visually-hidden');
+  document.body.classList.toggle('modal-open');
 }
 
 function closeModalWindowOnEsc(ev) {
@@ -54,3 +57,5 @@ function onWindowClick(ev) {
     closeModalWindow();
   }
 }
+// -----------Local Storage----------------
+
