@@ -43,7 +43,7 @@
 
 .switcher-label,
 .toggle {
-    height: 2.8rem;
+    height: 1.8rem;
     border-radius: 100px;
 }
 
@@ -51,7 +51,7 @@
     position: relative;
     right: -50%;
 
-    width: 15%;
+    width: 10%;
     background-color: rgba(0, 0, 0, 0.1);
     border-radius: 100px;
 
@@ -67,10 +67,10 @@
 .names {
     margin-top: 10px;
 
-    font-size: 90%;
+    font-size: 64%;
     font-weight: bolder;
     width: 65%;
-    margin-left: 17.5%;
+    margin-left: 9.5%;
 
     position: absolute;
     display: flex;
@@ -78,6 +78,8 @@
     user-select: none;
 }
 .dark {
+    margin-left: 27%;
+
     opacity: 0.5;
 }
 
@@ -109,6 +111,8 @@
     }
 
     .dark {
+        margin-left: 37%;
+
         opacity: 1;
         font-size: 90%;
     }
