@@ -8,12 +8,12 @@ import './js/search';
 import './js/refs';
 import './js/team-modal';
 import './js/local-storage';
-import './js/loader';
+// import './js/loader';
 import './js/notifications';
 import './js/trending-re';
 import './js/init';
 import './js/pagination';
-// import './js/theme-switcher/theme-switcher';
+import './js/theme-switcher/theme-switcher';
 import './js/movie-modal';
 
 import './sass/main.scss';

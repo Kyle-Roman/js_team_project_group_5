@@ -68,16 +68,17 @@ function myLibrarySet(e) {
   let watchedSet = [];
   let queuedSet = [];
 
-  if (modalButton.id === 'watched-button') {
-    localStorage.getItem('watched', JSON.parse(watchedSet));
-    watchedSet.push(movieId);
+  localStorage.setItem('watched', JSON.stringify(watchedSet));
 
-    localStorage.setItem('watched', JSON.stringify(watchedSet));
-    console.log(watchedSet);
+  if (modalButton.id === 'watched-button') {
+    const arr = JSON.parse(localStorage.getItem('watched'));
+
+    const addMovie = watchedSet.push(movieId);
+
+    console.log(addMovie);
 
 
   } else if (modalButton.id === 'queue-button') {
-
     localStorage.setItem('queue', movieId)
   }
 };
