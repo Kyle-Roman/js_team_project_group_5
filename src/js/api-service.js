@@ -27,7 +27,10 @@ export default class ApiService {
     const url = `${BASE_URL}/trending/movie/${this.period}?${searchParams}`;
 
     const response = await fetch(url);
-    return await response.json();
+    const result = await response.json();
+
+    this.incrementPage();
+    return result;
   }
 
   async fetchMovieByQuery() {
@@ -41,7 +44,10 @@ export default class ApiService {
     const url = `${BASE_URL}/search/movie?${searchParams}`;
 
     const response = await fetch(url);
-    return await response.json();
+    const result = await response.json();
+
+    this.incrementPage();
+    return result;
   }
 
   async fetchMovieById2(id) {
@@ -67,6 +73,13 @@ export default class ApiService {
     return genreArr;
   }
   //==================== конец ==============================================
+  get searchQuery() {
+    return this.query;
+  }
+
+  set searchQuery(searchQuery) {
+    this.query = searchQuery;
+  }
 
   incrementPage() {
     this.page += 1;

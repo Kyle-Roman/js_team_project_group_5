@@ -1,30 +1,32 @@
 //BASE
 // reset-styles
-@import "./base/reset-styles";
+@import './base/reset-styles';
 
 //UTILS
 // variables
-@import "./utils/variables";
+@import './utils/variables';
 // visually-hidden
-@import "./utils/visually-hidden";
+@import './utils/visually-hidden';
 
 //COMPONENTS
 //body
-@import "./components/header";
-@import "./components/body";
+@import './components/header';
+@import './components/body';
 //container
-@import "./components/container";
+@import './components/container';
 //gallery
-@import "./components/gallery";
+@import './components/gallery';
 //modal
-@import "./modal-styles.scss";
+@import './modal-styles.scss';
 //footer
-@import "./components/footer";
+@import './components/footer';
 //scrollup
-@import "./scroll-up/scrollup";
+@import './scroll-up/scrollup';
 //loader
 // @import "./components/loader";
 //pagination
-@import "./components/pagination";
+@import './components/pagination';
 //theme-switcher
-@import "./theme-switcher/theme-switcher";
+@import './theme-switcher/theme-switcher';
+
+@import './components/load-more';
