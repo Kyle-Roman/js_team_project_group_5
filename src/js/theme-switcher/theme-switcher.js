@@ -10,6 +10,7 @@ const Theme = {
 if (localStorage.getItem('Theme') === null) {
   refs.main.classList.add('light-theme');
   refs.checkboxBody.classList.add('light-theme');
+  refs.modal.classList.add('light-theme');
 }
 
 function onChangingPositionThemeSwitchToggle() {
@@ -17,10 +18,13 @@ function onChangingPositionThemeSwitchToggle() {
     /* Удаление класса light-theme */
     refs.main.classList.remove('light-theme');
     refs.checkboxBody.classList.remove('light-theme');
+    refs.modal.classList.remove('light-theme');
 
     /* Добавляется на элемент main класс dark-theme */
     refs.main.classList.add('dark-theme');
     refs.checkboxBody.classList.add('dark-theme__switcher');
+    refs.modal.classList.add('dark-theme');
+
     /* Удаление предыдущих настроек темы из localStorage */
     localStorage.removeItem('Theme');
 
@@ -30,10 +34,12 @@ function onChangingPositionThemeSwitchToggle() {
     /* Удаление класса dark-theme */
     refs.main.classList.remove('dark-theme');
     refs.checkboxBody.classList.remove('dark-theme__switcher');
+    refs.modal.classList.remove('dark-theme');
 
     /* Добавляется на элемент main класс light-theme */
     refs.main.classList.add('light-theme');
     refs.checkboxBody.classList.add('light-theme');
+    refs.modal.classList.add('light-theme');
 
     /* Удаление предыдущих настроек темы из localStorage */
     localStorage.removeItem('Theme');
@@ -52,18 +58,22 @@ if (localStorage.getItem('Theme') === 'DARK') {
   /* Удаление класса light-theme */
   refs.main.classList.remove('light-theme');
   refs.checkboxBody.classList.remove('light-theme');
+  refs.modal.classList.remove('dark-theme');
 
   /* Добавляется на элемент main класс dark-theme */
   refs.main.classList.add('dark-theme');
   refs.checkboxBody.classList.add('dark-theme__switcher');
+  refs.modal.classList.add('dark-theme');
 } else if (localStorage.getItem('Theme') === 'LIGHT') {
   //refs.checkbox.checked = false;
 
   /* Удаление класса light-theme */
   refs.main.classList.remove('dark-theme');
   refs.checkboxBody.classList.remove('dark-theme__switcher');
+  refs.modal.classList.remove('dark-theme');
 
   /* Добавляется на элемент main класс dark-theme */
   refs.main.classList.add('light-theme');
   refs.checkboxBody.classList.add('light-theme');
+  refs.modal.classList.add('light-theme');
 }
