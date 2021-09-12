@@ -27,20 +27,41 @@ export default async function setBaseConfig() {
 const modal = document.getElementById('myModal');
 modal.addEventListener('click', myLibrarySet);
 
-function myLibrarySet(e) {
-  const modalButton = e.target;
+// async function myLibrarySet(id) {
+//   try {
+//     const movie = await apiService.fetchMovieById2(id);
+//     const modalButton = e.target;
+//     if (modalButton.id === 'watched-button') {
+//       const movieId = modalCard.id;
+//       addToWatched();
+//       apiService.fetchMovieById2(movieId).then(console.log(movieId))
 
-  if (modalButton.id === 'watched-button') {
-    // const movieId = modalCard.id;
-    addToWatched();
-    // apiService.fetchMovieById2(movieId).then(console.log(movieId))
+//       addToWatched(movieId);
+//     } else if (modalButton.id === 'queue-button') {
+//       addToQueue();
+//     }
+//   } catch {
+//     return console.error();
+//   }
+// };
 
-    // addToWatched(movieId);
-  } else if (modalButton.id === 'queue-button') {
-    addToQueue();
+async function myLibrarySet(id) {
+  try {
+    const movie = await apiService.fetchMovieById2(id);
+    const modalButton = e.target;
+    if (modalButton.id === 'watched-button') {
+      // const movieId = modalCard.id;
+      addToWatched();
+      // apiService.fetchMovieById2(movieId).then(console.log(movieId))
+
+      // addToWatched(movieId);
+    } else if (modalButton.id === 'queue-button') {
+      addToQueue();
+    }
+  } catch {
+    return console.error();
   }
 };
-
 
 
 
@@ -49,7 +70,7 @@ function addToWatched(id) {
   // apiService.id = id;
   // const movie = this.dataset.id;
   console.log(id);
-  // localStorage.setItem('watched', movie)
+  localStorage.setItem('watched', movie)
 
 }
 
