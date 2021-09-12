@@ -59,29 +59,3 @@ function onWindowClick(ev) {
 }
 // -----------Local Storage----------------
 
-const modal = document.getElementById('myModal');
-modal.addEventListener('click', myLibrarySet);
-
-
-function myLibrarySet(e) {
-  // localStorage.clear()
-  const modalButton = e.target;
-  const movieId = localStorage.getItem('movie_id');
-
-  let watchedSet = [];
-  let queuedSet = [];
-
-  watchedSet = JSON.parse(localStorage.getItem('watched')) || [];
-  queuedSet = JSON.parse(localStorage.getItem('queued')) || [];
-
-  if (modalButton.id === 'watched-button') {
-
-    watchedSet.push(movieId.toString());
-    localStorage.setItem('watched', JSON.stringify(watchedSet));
-
-  } else if (modalButton.id === 'queue-button') {
-
-    queuedSet.push(movieId.toString());
-    localStorage.setItem('queued', JSON.stringify(queuedSet))
-  }
-};

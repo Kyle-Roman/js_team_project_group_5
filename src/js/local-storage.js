@@ -1,6 +1,6 @@
 import MovieApiService from './api-service';
 import modalCard from '../templates/modal-markup.hbs';
-import dataList from '../js/pre-render';
+
 
 const apiService = new MovieApiService();
 
@@ -24,42 +24,38 @@ export default async function setBaseConfig() {
   }
 }
 
-// const modal = document.getElementById('myModal');
-// modal.addEventListener('click', myLibrarySet);
 
-// async function myLibrarySet(id) {
-//   try {
-//     const movie = await apiService.fetchMovieById2(id);
-//     const modalButton = e.target;
-//     if (modalButton.id === 'watched-button') {
-//       const movieId = modalCard.id;
-//       addToWatched();
-//       apiService.fetchMovieById2(movieId).then(console.log(movieId))
+const modal = document.getElementById('myModal');
+modal.addEventListener('click', myLibrarySet);
 
-//       addToWatched(movieId);
-//     } else if (modalButton.id === 'queue-button') {
-//       addToQueue();
-//     }
-//   } catch {
-//     return console.error();
+
+
+function myLibrarySet(e) {
+  // localStorage.clear()
+  const modalButton = e.target;
+
+  let watchedSet = [];
+  let queuedSet = [];
+
+  watchedSet = JSON.parse(localStorage.getItem('watched')) || [];
+  queuedSet = JSON.parse(localStorage.getItem('queued')) || [];
+
+  const movieId = localStorage.getItem('movie_id');
+
+  if (modalButton.id === 'watched-button') {
+    // movieSetCheck();
+    watchedSet.push(movieId.toString());
+    localStorage.setItem('watched', JSON.stringify(watchedSet));
+
+  } else if (modalButton.id === 'queue-button') {
+
+    queuedSet.push(movieId.toString());
+    localStorage.setItem('queued', JSON.stringify(queuedSet))
+  }
+};
+
+// function movieSetCheck() {
+//   if (watchedSet.contains(movieId)) {
+//     console.log('has it');
 //   }
-// };
-
-// async function myLibrarySet(id) {
-//   try {
-//     const movie = await apiService.fetchMovieById2(id);
-//     const modalButton = e.target;
-//     if (modalButton.id === 'watched-button') {
-//       // const movieId = modalCard.id;
-//       addToWatched();
-//       // apiService.fetchMovieById2(movieId).then(console.log(movieId))
-
-//       // addToWatched(movieId);
-//     } else if (modalButton.id === 'queue-button') {
-//       addToQueue();
-//     }
-//   } catch {
-//     return console.error();
-//   }
-// };
-
+// }
