@@ -5,6 +5,9 @@ import refs from './refs';
 
 const apiService = new ApiService();
 
+const modal = document.getElementById('myModal');
+modal.addEventListener('click', myLibrarySet);
+
 // const modalContent = document.querySelector('.modal_content');
 const filmField = document.querySelector('#film-info');
 const close = document.querySelector('.close_modal_window');
@@ -19,6 +22,7 @@ async function getInfoAndRenderMarkup(id) {
     // filmField.innerHTML = modalMovieTpl(film);
     const movie = await apiService.fetchMovieById2(id);
     render('#film-info', modalMovieTpl, movie, 1);
+    localStorage.setItem('movie_id', id)
   } catch {
     return console.error();
   }
@@ -56,3 +60,16 @@ function onWindowClick(ev) {
     closeModalWindow();
   }
 }
+
+function myLibrarySet(e) {
+  const modalButton = e.target;
+  const movieId = localStorage.getItem('movie_id');
+
+  if (modalButton.id === 'watched-button') {
+    localStorage.setItem('watched', movieId)
+
+  } else if (modalButton.id === 'queue-button') {
+
+    localStorage.setItem('queue', movieId)
+  }
+};
