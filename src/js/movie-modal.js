@@ -65,8 +65,16 @@ function myLibrarySet(e) {
   const modalButton = e.target;
   const movieId = localStorage.getItem('movie_id');
 
+  let watchedSet = [];
+  let queuedSet = [];
+
   if (modalButton.id === 'watched-button') {
-    localStorage.setItem('watched', movieId)
+    localStorage.getItem('watched', JSON.parse(watchedSet));
+    watchedSet.push(movieId);
+
+    localStorage.setItem('watched', JSON.stringify(watchedSet));
+    console.log(watchedSet);
+
 
   } else if (modalButton.id === 'queue-button') {
 
