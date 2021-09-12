@@ -51,10 +51,10 @@
     .switcher-label {
         position: relative;
         right: -50%;
-
-        width: 38%;
-        background-color: rgba(0, 0, 0, 0.1);
+        width: 10%;
+        background-color: $accent-color;
         border-radius: 100px;
+
 
         cursor: pointer;
     }
@@ -81,8 +81,9 @@
     .dark {
         margin-left: 27%;
 
-        opacity: 0.5;
-    }
+    //opacity: 0.5;
+}
+
 
     /* -------- Switch Styles ------------*/
     [type="checkbox"] {
@@ -118,21 +119,21 @@
             font-size: 90%;
         }
 
-        .light {
-            color: $secondary-text-color;
-            opacity: 0.5;
-            font-size: 90%;
-        }
-
-        .crescent {
-            transform: scale(1);
-            background: #26242e;
-        }
-
-        .main-circle {
-            background: linear-gradient(40deg, #8983f7, #a3dafb 70%);
-        }
+    .light {
+        color: $secondary-text-color;
+        //opacity: 0.5;
+        font-size: 90%;
     }
+      
+    .crescent {
+        transform: scale(1);
+        background: #26242e;
+    }
+
+    .main-circle {
+        background: linear-gradient(40deg, #8983f7, #a3dafb 70%);
+    }
+  }
 }
 
 @media screen and (min-width: 768px) and (max-width: 1023px) {
