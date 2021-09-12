@@ -1,6 +1,6 @@
 .body-switcher {
     //position: relative;
-
+    margin-left: auto;
     width: 200px;
 
     background-color: #fff;
@@ -12,6 +12,8 @@
 }
 
 .switcher-content {
+    position: absolute;
+
     display: flex;
     flex-direction: column;
     margin: auto;
@@ -33,9 +35,10 @@
 }
 
 .heading {
+    color: $secondary-text-color;
+
     font-size: 140%;
     font-weight: bolder;
-    margin: 3rem 0 0.2rem 0;
 }
 
 .switcher-label,
@@ -45,10 +48,12 @@
 }
 
 .switcher-label {
-    width: 100%;
+    position: relative;
+    right: -50%;
+
+    width: 15%;
     background-color: rgba(0, 0, 0, 0.1);
     border-radius: 100px;
-    position: relative;
 
     cursor: pointer;
 }
@@ -109,6 +114,7 @@
     }
 
     .light {
+        color: $secondary-text-color;
         opacity: 0.5;
         font-size: 90%;
     }
@@ -120,9 +126,5 @@
 
     .main-circle {
         background: linear-gradient(40deg, #8983f7, #a3dafb 70%);
-    }
-
-    .heading {
-        color: $priority-text-color;
     }
 }
