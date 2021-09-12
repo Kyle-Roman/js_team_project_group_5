@@ -8,7 +8,7 @@ const Theme = {
 };
 
 if (localStorage.getItem('Theme') === null) {
-  refs.body.classList.add('light-theme');
+  refs.main.classList.add('light-theme');
   refs.checkboxBody.classList.add('light-theme');
 }
 
