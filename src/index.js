@@ -1,5 +1,11 @@
 history.scrollRestoration = 'manual';
 
+import ApiService from './js/api-service'
+
+const apiService = new ApiService()
+
+export default apiService
+
 $(window).on('beforeunload', function () {
   $(window).scrollTop(0);
 });
