@@ -11,7 +11,6 @@ const refs = {
 };
 
 const apiService = new ApiService();
-const watchedMovieListId = JSON.parse(localStorage.getItem('watched'));
 
 const libraryBtn = document.getElementById('my-library');
 
@@ -24,6 +23,8 @@ function onBtnLibraryClick(e) {
 
 function getMovieById() {
   clearGallery();
+
+  const watchedMovieListId = JSON.parse(localStorage.getItem('watched'));
 
   const infoM = watchedMovieListId.forEach(function fetchMovieById2(id) {
     fetch(`${BASE_URL}/movie/${id}?api_key=${API_KEY}`).then(r =>
