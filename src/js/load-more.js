@@ -1,5 +1,5 @@
 import ApiService from './api-service';
-import getTrending from './trending-re';
+// import getTrending from './trending-re';
 import searchMovies from './search-trending';
 
 console.log(ApiService);
@@ -12,5 +12,5 @@ loadMoreBtn.addEventListener('click', onClick);
 
 async function onClick() {
   apiService.incrementPage();
-  getTrending('day');
+  searchMovies('day');
 }
