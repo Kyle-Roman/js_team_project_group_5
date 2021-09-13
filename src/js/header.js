@@ -1,4 +1,6 @@
 import Initialize from './init';
+import getWatched from './library/watched-movie';
+import getQueued from './library/queued-movie';
 
 const refs = {
   homeLink: document.querySelector('#home'),
@@ -6,11 +8,14 @@ const refs = {
   searchForm: document.querySelector('#search-form'),
   btnContainer: document.querySelector('#btn-container__library'),
   gallery: document.querySelector('#gallery'),
+  watchedBtn: document.querySelector('#btn-watched'),
+  queueBtn: document.querySelector('#btn-queue'),
 };
 
-// console.log(refs.myLibraryLink);
 refs.myLibraryLink.addEventListener('click', onLibraryClick);
 refs.homeLink.addEventListener('click', onHomeClick);
+refs.queueBtn.addEventListener('click', onQueueBtnClick);
+refs.watchedBtn.addEventListener('click', onWatchedBtnClick);
 
 function onLibraryClick() {
   refs.homeLink.classList.remove('current');
@@ -18,6 +23,8 @@ function onLibraryClick() {
 
   refs.searchForm.classList.add('visually-hidden');
   refs.btnContainer.classList.remove('visually-hidden');
+
+  getWatched();
 }
 
 function onHomeClick() {
@@ -30,4 +37,12 @@ function onHomeClick() {
   refs.gallery.innerHTML = '';
 
   Initialize();
+}
+
+function onQueueBtnClick() {
+  getQueued();
+}
+
+function onWatchedBtnClick() {
+  getWatched();
 }

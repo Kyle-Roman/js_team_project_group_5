@@ -1,6 +1,6 @@
 import moviesTpl from '../../templates/library_movie-card.hbs';
 
-import ApiService from '../api-service';
+// import ApiService from '../api-service';
 
 const API_KEY = '838a1c7309b989baab596bfe84b6d2d8';
 const BASE_URL = 'https://api.themoviedb.org/3';
@@ -10,18 +10,18 @@ const refs = {
   gallery: document.querySelector('.gallery'),
 };
 
-const apiService = new ApiService();
+// const apiService = new ApiService();
 
 const libraryBtn = document.getElementById('my-library');
 
-libraryBtn.addEventListener('click', onBtnLibraryClick);
+// libraryBtn.addEventListener('click', onBtnLibraryClick);
 
-function onBtnLibraryClick(e) {
-  e.preventDefault();
-  getMovieById();
-}
+// function onBtnLibraryClick(e) {
+//   e.preventDefault();
+//   getWatched();
+// }
 
-function getMovieById() {
+export default function getWatched() {
   clearGallery();
 
   const watchedMovieListId = JSON.parse(localStorage.getItem('watched'));
@@ -29,7 +29,7 @@ function getMovieById() {
   const infoM = watchedMovieListId.forEach(function fetchMovieById2(id) {
     fetch(`${BASE_URL}/movie/${id}?api_key=${API_KEY}`).then(r =>
       r.json().then(movieInfo => {
-        console.log(movieInfo);
+        // console.log(movieInfo);
 
         // console.log(
         //   movieInfo.id,
