@@ -8,7 +8,7 @@ const refs = {
   gallery: document.querySelector('#gallery'),
 };
 
-console.log(refs.myLibraryLink);
+// console.log(refs.myLibraryLink);
 refs.myLibraryLink.addEventListener('click', onLibraryClick);
 refs.homeLink.addEventListener('click', onHomeClick);
 
