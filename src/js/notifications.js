@@ -45,4 +45,42 @@ export default class Notification {
       background: '#d62700',
     });
   }
+
+  successfullyAddedToWatched() {
+    Toast.fire({
+      icon: 'success',
+      title: 'Successfully added to watched',
+
+      background: '#f7f7f7',
+    });
+  }
+
+  successfullyAddedToQueue() {
+    Toast.fire({
+      icon: 'success',
+      title: 'Successfully added to queue',
+
+      background: '#f7f7f7',
+    });
+  }
+
+  alreadyWatched() {
+    Toast.fire({
+      icon: 'info',
+      iconColor: '#ff6b08',
+      title: 'Already watched',
+
+      background: '#f7f7f7',
+    });
+  }
+
+  alreadyInQueue() {
+    Toast.fire({
+      icon: 'info',
+      iconColor: '#ff6b08',
+      title: 'Already in queue',
+
+      background: '#f7f7f7',
+    });
+  }
 }

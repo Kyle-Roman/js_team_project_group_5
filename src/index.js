@@ -18,3 +18,4 @@ import './js/movie-modal';
 
 import './sass/main.scss';
 // import './js/load-more';
+import './js/header';
