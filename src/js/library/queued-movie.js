@@ -22,9 +22,8 @@ function onBtnLibraryClick(e) {
 }
 
 function getMovieById() {
+  const watchedMovieListId = JSON.parse(localStorage.getItem('queued'));
   clearGallery();
-
-  const watchedMovieListId = JSON.parse(localStorage.getItem('watched'));
 
   const infoM = watchedMovieListId.forEach(function fetchMovieById2(id) {
     fetch(`${BASE_URL}/movie/${id}?api_key=${API_KEY}`).then(r =>
