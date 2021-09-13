@@ -1,7 +1,7 @@
 import { getTrending } from './search-trending';
 import setBaseConfig from './local-storage';
 
-async function Initialize() {
+export default async function Initialize() {
   await setBaseConfig();
   getTrending('day');
 }

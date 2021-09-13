@@ -17,10 +17,14 @@
             <h2 class='card__name'>{{title}}</h2>
           </div>
             {{#each genres}}
-          <p class='card__info'>{{name}}
+              {{#if @last}}<span>{{name}}</span>{{else}}<span>{{name}}, </span>{{/if}}
             {{/each}}
-            |
-            {{release_date}}
+            | {{release_date}}
+            {{!-- {{#each genres}} --}}
+          {{!-- <p class='card__info'>{{name}} --}}
+            {{!-- {{/each}} --}}
+            {{!-- | --}}
+            {{!-- {{release_date}} --}}
             <span class='card__movie-rating'>{{vote_average}}</span>
           </p>
         </div>

@@ -137,6 +137,7 @@ $accent-color: #ff6b01;
 
 .menu__link:hover {
   font-size: 15px;
+  cursor: pointer;
 }
 
 .current::after {
