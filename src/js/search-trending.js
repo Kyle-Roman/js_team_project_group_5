@@ -54,7 +54,8 @@ async function getTrending(period) {
 
 async function searchMovies(searchQuery) {
   if (searchQuery === '') {
-    return notify.emptyQuery();
+    // return notify.emptyQuery();
+    return notify.successfullyAddedToQueue();
   }
 
   if (searchQuery !== apiService.searchQuery) {
