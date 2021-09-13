@@ -1,8 +1,9 @@
 import MovieApiService from './api-service';
+import Notification from './notifications';
 import modalCard from '../templates/modal-markup.hbs';
 
-
 const apiService = new MovieApiService();
+const notify = new Notification();
 
 export default async function setBaseConfig() {
   if (!localStorage.getItem('img_base_url')) {
@@ -24,11 +25,8 @@ export default async function setBaseConfig() {
   }
 }
 
-
 const modal = document.getElementById('myModal');
 modal.addEventListener('click', myLibrarySet);
-
-
 
 function myLibrarySet(e) {
   // localStorage.clear()
@@ -44,17 +42,21 @@ function myLibrarySet(e) {
 
   if (modalButton.id === 'watched-button') {
     if (watchedSet.includes(movieId)) {
-      return alert('Allready watched!');
+      // return alert('Allready watched!');
+      return notify.alreadyWatched();
     } else {
       watchedSet.push(movieId.toString());
       localStorage.setItem('watched', JSON.stringify(watchedSet));
+      notify.successfullyAddedToWatched();
     }
   } else if (modalButton.id === 'queue-button') {
     if (queuedSet.includes(movieId)) {
-      return alert('Allready in the queue!');
+      return notify.alreadyInQueue();
+      // return alert('Allready in the queue!');
     } else {
       queuedSet.push(movieId.toString());
-      localStorage.setItem('queued', JSON.stringify(queuedSet))
+      localStorage.setItem('queued', JSON.stringify(queuedSet));
+      notify.successfullyAddedToQueue();
     }
-  };
+  }
 }
