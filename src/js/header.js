@@ -10,6 +10,8 @@ const refs = {
   gallery: document.querySelector('#gallery'),
   watchedBtn: document.querySelector('#btn-watched'),
   queueBtn: document.querySelector('#btn-queue'),
+  clearBtn: document.querySelector('#clear-container'),
+  loadMoreBtn: document.querySelector('.load-more-container'),
 };
 
 refs.myLibraryLink.addEventListener('click', onLibraryClick);
@@ -23,6 +25,8 @@ function onLibraryClick() {
 
   refs.searchForm.classList.add('visually-hidden');
   refs.btnContainer.classList.remove('visually-hidden');
+  refs.clearBtn.classList.remove('visually-hidden');
+  refs.loadMoreBtn.classList.add('visually-hidden');
 
   getWatched();
 }
@@ -33,6 +37,8 @@ function onHomeClick() {
 
   refs.searchForm.classList.remove('visually-hidden');
   refs.btnContainer.classList.add('visually-hidden');
+  refs.loadMoreBtn.classList.remove('visually-hidden');
+  refs.clearBtn.classList.add('visually-hidden');
 
   refs.gallery.innerHTML = '';
 
