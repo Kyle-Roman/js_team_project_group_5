@@ -1,20 +1,31 @@
-{{#each this}}
+{{#with this}}
 
   <li class='wow animate__fadeInUp card__item list' data-id='{{id}}' id='{{id}}' title='{{title}}'>
     <article class='card'>
       <a href='' class='card__link link'>
         <div class='card-img-container'>
-          <img src='{{posterURL}}' alt='{{title}}' data-id='{{id}}' class='card__image' />
+          <img
+            src='https://image.tmdb.org/t/p/w500{{poster_path}}'
+            alt='{{title}}'
+            data-id='{{id}}'
+            class='card__image'
+          />
         </div>
 
         <div class='card__description'>
           <div class='card-name__container'>
             <h2 class='card__name'>{{title}}</h2>
           </div>
-          <p class='card__info'>{{genres}} | {{release_date}} <span class='card__movie-rating'>{{vote_average}}</span> </p>
+            {{#each genres}}
+          <p class='card__info'>{{name}}
+            {{/each}}
+            |
+            {{release_date}}
+            <span class='card__movie-rating'>{{vote_average}}</span>
+          </p>
         </div>
       </a>
     </article>
   </li>
 
-{{/each}}
+{{/with}}
