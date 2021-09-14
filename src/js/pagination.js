@@ -12,7 +12,7 @@ document.body.classList.add('home');
 searchMovieForm.addEventListener('submit', e => {
   e.preventDefault();
   document.body.classList.remove('home');
-  document.body.classList.add('search');
+  document.body.classList.add('js-search');
   if (query === e.currentTarget.children[0].value) {
     return;
   }
@@ -40,7 +40,7 @@ searchMovieForm.children[0].addEventListener('blur', e => {
   e.preventDefault();
   if (e.currentTarget.value === '' && !document.body.classList.contains('home')) {
     document.body.classList.add('home');
-    document.body.classList.remove('search');
+    document.body.classList.remove('js-search');
     upDateMovie();
     movieContainer.innerHTML = '';
 
@@ -209,7 +209,7 @@ function PaginationButton(totalPages, maxPagesVisible = 10, currentPage = 1) {
 }
 
 const upDateMovie = (page, query) => {
-  if (document.body.classList.contains('search')) {
+  if (document.body.classList.contains('js-search')) {
     return api.fetchMoviesByQuery(page, query).then(({ results, total_pages }) => {
       if (results.length > 0) {
         trendMovieContainer.innerHTML = '';
