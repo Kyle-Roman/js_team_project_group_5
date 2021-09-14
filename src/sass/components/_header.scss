@@ -59,8 +59,8 @@ $accent-color: #ff6b01;
 }
 
 .icon-film {
-  width: 24px;
-  height: 24px;
+  width: 30px;
+  height: 30px;
   margin-right: auto;
 
   cursor: pointer;
@@ -88,7 +88,9 @@ $accent-color: #ff6b01;
   transition: font-size 300ms;
 
   @media screen and (min-width: 768px) {
-    display: block;
+    display: flex;
+    justify-content: baseline;
+    padding: 3px;
     font-weight: 500;
     font-size: 30px;
     line-height: 35px;
