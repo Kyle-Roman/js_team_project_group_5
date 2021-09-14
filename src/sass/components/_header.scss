@@ -252,6 +252,11 @@ $accent-color: #ff6b01;
   }
 }
 
+.btn-liba.active {
+  background-color: $accent-color;
+  border-color: $accent-color;
+}
+
 .accent-color {
   background-color: $accent-color;
   border-color: $accent-color;

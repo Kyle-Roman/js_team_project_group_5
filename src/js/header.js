@@ -28,6 +28,9 @@ function onLibraryClick() {
   // refs.clearBtn.classList.remove('visually-hidden');
   refs.loadMoreBtn.classList.add('visually-hidden');
 
+  refs.queueBtn.classList.remove('active');
+  refs.watchedBtn.classList.add('active');
+
   getWatched();
 }
 
@@ -46,9 +49,13 @@ function onHomeClick() {
 }
 
 function onQueueBtnClick() {
+  refs.watchedBtn.classList.remove('active');
+  refs.queueBtn.classList.add('active');
   getQueued();
 }
 
 function onWatchedBtnClick() {
+  refs.queueBtn.classList.remove('active');
+  refs.watchedBtn.classList.add('active');
   getWatched();
 }
