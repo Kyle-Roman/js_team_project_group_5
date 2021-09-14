@@ -1,5 +1,8 @@
 .modal {
   display: flex;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
   position: fixed;
   justify-content: center;
   align-items: center;
@@ -10,7 +13,14 @@
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   overflow: auto;
-  animation-duration: 300ms;
+  transition: all 1s linear;
+}
+
+.show {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: all;
+  transition: all 0.5s linear;
 }
 
 .modal_content {
