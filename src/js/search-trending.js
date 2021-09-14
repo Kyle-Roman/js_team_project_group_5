@@ -1,37 +1,51 @@
-// import MovieApiService from './api-service';
 import apiService from '..';
 import Notification from './notifications';
 import movieCardTpl from '../templates/movie-card.hbs';
+import LoadMoreBtn from './load-more';
 import render from './render';
 
 import 'animate.css';
 
 const formRef = document.querySelector('#search-form');
-const loadMoreBtn = document.querySelector('#load-more-button');
 
-formRef.addEventListener('submit', onSubmit);
-loadMoreBtn.addEventListener('click', onLoadMoreBtnClick);
+formRef.addEventListener('submit', onSearchFormSubmit);
 
-// const apiService = new MovieApiService();
 const notify = new Notification();
 
+const loadMoreBtn = new LoadMoreBtn({
+  selector: '#load-more-button',
+  hidden: false,
+});
+
+loadMoreBtn.refs.button.addEventListener('click', onLoadMoreBtnClick);
+
 async function onLoadMoreBtnClick() {
+  loadMoreBtn.disable();
+
   if (apiService.searchQuery === '') {
-    getTrending('day');
+    await getTrending('day');
+    loadMoreBtn.enable();
+
     return;
   }
 
-  const results = await searchMovies(apiService.searchQuery);
-  render('#gallery', movieCardTpl, results);
+  const movies = await searchMovies(apiService.searchQuery);
+  render('#gallery', movieCardTpl, movies);
+
+  if (movies.results.length < 20) {
+    loadMoreBtn.hide();
+  }
+  loadMoreBtn.enable();
 }
 
-async function onSubmit(event) {
+async function onSearchFormSubmit(event) {
   event.preventDefault();
 
   try {
     const movies = await searchMovies(event.currentTarget.elements.search.value);
     if (!movies.results.length) {
       notify.notFound();
+
       return;
     }
 
@@ -47,6 +61,10 @@ async function getTrending(period) {
 
   try {
     const movies = await apiService.fetchTrending();
+    if (movies.results.length < 19) {
+      loadMoreBtn.hide();
+    }
+
     render('#gallery', movieCardTpl, movies);
   } catch (e) {
     console.log(e);

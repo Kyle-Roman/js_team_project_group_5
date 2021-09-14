@@ -23,3 +23,11 @@
     background-color: #ff944d;
   }
 }
+
+.load-more-btn.is-hidden {
+  display: none;
+}
+
+.load-more-btn > .spinner.is-hidden {
+  display: none;
+}
