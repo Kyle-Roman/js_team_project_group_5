@@ -32,31 +32,62 @@ function myLibrarySet(e) {
   // localStorage.clear()
   const modalButton = e.target;
 
-  let watchedSet = [];
-  let queuedSet = [];
+  // let watchedSet = [];
+  // let queuedSet = [];
 
-  watchedSet = JSON.parse(localStorage.getItem('watched')) || [];
-  queuedSet = JSON.parse(localStorage.getItem('queued')) || [];
+  // watchedSet = JSON.parse(localStorage.getItem('watched')) || [];
+  // queuedSet = JSON.parse(localStorage.getItem('queued')) || [];
+
+  const watchedSet = getWatchedSet();
+  const queuedSet = getQueuedSet();
 
   const movieId = localStorage.getItem('movie_id');
 
   if (modalButton.id === 'watched-button') {
-    if (watchedSet.includes(movieId)) {
-      // return alert('Allready watched!');
-      return notify.alreadyWatched();
-    } else {
-      watchedSet.push(movieId.toString());
-      localStorage.setItem('watched', JSON.stringify(watchedSet));
+    if (!watchedSet.includes(movieId)) {
+      addElementToLocalStorage(watchedSet, 'watched', movieId);
+      modalButton.textContent = 'remove from watched';
       notify.successfullyAddedToWatched();
+    } else {
+      removeFromLocalStorage(watchedSet, 'watched', movieId);
+      modalButton.textContent = 'add to watched';
     }
   } else if (modalButton.id === 'queue-button') {
-    if (queuedSet.includes(movieId)) {
-      return notify.alreadyInQueue();
-      // return alert('Allready in the queue!');
-    } else {
-      queuedSet.push(movieId.toString());
-      localStorage.setItem('queued', JSON.stringify(queuedSet));
+    if (!queuedSet.includes(movieId)) {
+      addElementToLocalStorage(queuedSet, 'queued', movieId);
+      modalButton.textContent = 'remove from queue';
       notify.successfullyAddedToQueue();
+    } else {
+      removeFromLocalStorage(queuedSet, 'queued', movieId);
+      modalButton.textContent = 'add to queue';
     }
+  }
+}
+
+function removeFromLocalStorage(currentSet, storageItem, elemId) {
+  const elemIndex = currentSet.indexOf(elemId);
+  currentSet.splice(elemIndex, 1);
+  localStorage.removeItem(storageItem);
+  localStorage.setItem(storageItem, JSON.stringify(currentSet));
+}
+
+function addElementToLocalStorage(currentSet, storageItem, elemId) {
+  currentSet.push(elemId.toString());
+  localStorage.setItem(storageItem, JSON.stringify(currentSet));
+}
+
+function getWatchedSet() {
+  if (localStorage.getItem('watched') !== null) {
+    return JSON.parse(localStorage.getItem('watched'));
+  } else {
+    return [];
+  }
+}
+
+function getQueuedSet() {
+  if (localStorage.getItem('queued') !== null) {
+    return JSON.parse(localStorage.getItem('queued'));
+  } else {
+    return [];
   }
 }

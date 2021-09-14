@@ -2,6 +2,7 @@ import ApiService from './api-service';
 import modalMovieTpl from '../templates/modal-markup.hbs';
 import render from './render';
 import refs from './refs';
+import myLibrarySet from './local-storage';
 
 const apiService = new ApiService();
 
@@ -20,6 +21,24 @@ async function getInfoAndRenderMarkup(id) {
     const movie = await apiService.fetchMovieById2(id);
     render('#film-info', modalMovieTpl, movie, 1);
     localStorage.setItem('movie_id', id);
+
+    const watchedSet = JSON.parse(localStorage.getItem('watched'));
+    const queuedSet = JSON.parse(localStorage.getItem('queued'));
+    const watchedBtn = document.querySelector('.watched-button');
+    const queueBtn = document.querySelector('.queue-button');
+    console.log(watchedSet);
+
+    if (watchedSet) {
+      if (watchedSet.includes(id)) {
+        watchedBtn.textContent = 'remove from watched';
+      }
+    }
+
+    if (queuedSet) {
+      if (queuedSet.includes(id)) {
+        queueBtn.textContent = 'remove from queue';
+      }
+    }
   } catch {
     return console.error();
   }
