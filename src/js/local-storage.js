@@ -1,10 +1,12 @@
 import MovieApiService from './api-service';
 import Notification from './notifications';
 import modalCard from '../templates/modal-markup.hbs';
+import getQueued from './library/queued-movie.js';
+import getWatched from './library/watched-movie.js';
 
 const apiService = new MovieApiService();
 const notify = new Notification();
-
+const pagination = document.querySelector('.pagination-buttons');
 export default async function setBaseConfig() {
   if (!localStorage.getItem('img_base_url')) {
     try {
@@ -24,7 +26,7 @@ export default async function setBaseConfig() {
     }
   }
 }
-
+console.log(pagination);
 const modal = document.getElementById('myModal');
 modal.addEventListener('click', myLibrarySet);
 
@@ -47,10 +49,17 @@ function myLibrarySet(e) {
     if (!watchedSet.includes(movieId)) {
       addElementToLocalStorage(watchedSet, 'watched', movieId);
       modalButton.textContent = 'remove from watched';
+      if (pagination.classList.contains('visually-hidden')) {
+        getWatched();
+      }
+
       notify.successfullyAddedToWatched();
     } else {
       removeFromLocalStorage(watchedSet, 'watched', movieId);
       modalButton.textContent = 'add to watched';
+      if (pagination.classList.contains('visually-hidden')) {
+        getWatched();
+      }
       notify.successfullyRemovedFromWatched();
     }
   } else if (modalButton.id === 'queue-button') {
@@ -58,10 +67,16 @@ function myLibrarySet(e) {
       addElementToLocalStorage(queuedSet, 'queued', movieId);
       modalButton.textContent = 'remove from queue';
       notify.successfullyAddedToQueue();
+      if (pagination.classList.contains('visually-hidden')) {
+        getQueued();
+      }
     } else {
       removeFromLocalStorage(queuedSet, 'queued', movieId);
       modalButton.textContent = 'add to queue';
       notify.successfullyRemovedFromQueue();
+      if (pagination.classList.contains('visually-hidden')) {
+        getQueued();
+      }
     }
   }
 }

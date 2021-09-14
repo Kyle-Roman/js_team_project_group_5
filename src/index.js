@@ -12,12 +12,13 @@ $(window).on('beforeunload', function () {
 
 // import './js/search-trending';
 import './js/refs';
+import './js/pagination';
+
 import './js/team-modal';
 import './js/local-storage';
 import './js/loader';
 import './js/notifications';
 import './js/init';
-import './js/pagination';
 import './js/theme-switcher/theme-switcher';
 import './js/movie-modal';
 
