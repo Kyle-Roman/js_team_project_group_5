@@ -5,6 +5,7 @@
 .section-gallery {
   padding-top: 50px;
   padding-bottom: 50px;
+  min-height: calc(100vh - 329px);
 }
 
 .card-name__container {
@@ -86,7 +87,8 @@
 
   transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
-  transition: background 250ms cubic-bezier(0.4, 0, 0.2, 1), transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover,
   &:focus {
