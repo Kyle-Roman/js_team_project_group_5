@@ -10,7 +10,7 @@ $(window).on('beforeunload', function () {
   $(window).scrollTop(0);
 });
 
-// import './js/search-trending';
+import './js/search-trending';
 import './js/refs';
 import './js/team-modal';
 import './js/local-storage';
