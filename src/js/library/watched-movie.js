@@ -26,24 +26,33 @@ export default function getWatched() {
 
   const watchedMovieListId = JSON.parse(localStorage.getItem('watched'));
 
-  const infoM = watchedMovieListId.forEach(function fetchMovieById2(id) {
-    fetch(`${BASE_URL}/movie/${id}?api_key=${API_KEY}`).then(r =>
-      r.json().then(movieInfo => {
-        // console.log(movieInfo);
+  if (watchedMovieListId === null) {
+    refs.gallery.innerHTML = '<p class="info-text__library">Your library is empty.</p>';
+  } else {
+    clearGallery();
+    const infoM = watchedMovieListId.forEach(function fetchMovieById2(id) {
+      fetch(`${BASE_URL}/movie/${id}?api_key=${API_KEY}`).then(r =>
+        r.json().then(movieInfo => {
+          console.log(movieInfo);
 
-        // console.log(
-        //   movieInfo.id,
-        //   movieInfo.release_date,
-        //   movieInfo.title,
-        //   movieInfo.poster_path,
-        //   movieInfo.genres,
-        //   movieInfo.vote_average,
-        // );
-        refs.gallery.insertAdjacentHTML('beforeend', moviesTpl(movieInfo));
-        return movieInfo;
-      }),
-    );
-  });
+          console.log(movieInfo.genres.length);
+
+          const genres = movieInfo.genres.map(({ name }) => {});
+          console.log(genres);
+          // console.log(
+          //   movieInfo.id,
+          //   movieInfo.release_date,
+          //   movieInfo.title,
+          //   movieInfo.poster_path,
+          //   movieInfo.genres,
+          //   movieInfo.vote_average,
+          // );
+          refs.gallery.insertAdjacentHTML('beforeend', moviesTpl(movieInfo, movieInfo.genres[0]));
+          return movieInfo;
+        }),
+      );
+    });
+  }
 }
 
 function clearGallery() {

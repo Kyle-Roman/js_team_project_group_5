@@ -1,13 +1,61 @@
-import ApiService from './trendingMovies/api';
+import ApiService from '../js/trendingMovies/api.js';
 import moviesTpl from '../templates/movie-card_library.hbs';
-import API from '../js/api-service';
-
 const movieContainer = document.querySelector('.pagination ');
-const trendMovieContainer = document.querySelector('.gallery');
-const paginationWrapper = document.querySelector('.pagination-buttons')
+const trendMovieContainer = document.querySelector('.movie-container');
+const searchMovieForm = document.querySelector('.form');
 
 let page = 1;
 let totalPage = 500;
+let query = null;
+let prevQuery = null;
+document.body.classList.add('home');
+searchMovieForm.addEventListener('submit', e => {
+  e.preventDefault();
+  document.body.classList.remove('home');
+  document.body.classList.add('search');
+  if (query === e.currentTarget.children[0].value) {
+    return;
+  }
+  prevQuery = query;
+  query = e.currentTarget.children[0].value;
+  upDateMovie(1, query).then(({ results }) => {
+    if (results.length < 1) {
+      query = prevQuery;
+      return;
+    }
+    trendMovieContainer.innerHTML = '';
+    movieContainer.innerHTML = '';
+    const paginationButtons = new PaginationButton(totalPage - 1, 7);
+    paginationButtons.render(movieContainer);
+    paginationButtons.onChange(e => {
+      if (e.target.value === page) {
+        return;
+      }
+      page = e.target.value;
+      upDateMovie(e.target.value, query);
+    });
+  });
+});
+searchMovieForm.children[0].addEventListener('blur', e => {
+  e.preventDefault();
+  if (e.currentTarget.value === '' && !document.body.classList.contains('home')) {
+    document.body.classList.add('home');
+    document.body.classList.remove('search');
+    upDateMovie();
+    movieContainer.innerHTML = '';
+
+    const paginationButtons = new PaginationButton(500, 7);
+    paginationButtons.render(movieContainer);
+    paginationButtons.onChange(e => {
+      if (e.target.value === page) {
+        return;
+      }
+      page = e.target.value;
+
+      upDateMovie(e.target.value);
+    });
+  }
+});
 const api = new ApiService();
 const genres = api.fetchGenres().then(({ genres }) => {
   let result = {};
@@ -16,7 +64,6 @@ const genres = api.fetchGenres().then(({ genres }) => {
   }
   return result;
 });
-
 const pageNumbers = (total, max, current) => {
   const half = Math.floor(max / 2);
   let to = max;
@@ -61,9 +108,9 @@ function PaginationButton(totalPages, maxPagesVisible = 10, currentPage = 1) {
     end: () => pages.slice(-1)[0] === totalPages,
     next: () => currentPage === totalPages,
   };
-  // const frag = document.createDocumentFragment();
+  const frag = document.createDocumentFragment();
   const paginationButtonContainer = document.createElement('div');
-  // paginationButtonContainer.className = 'pagination-buttons';
+  paginationButtonContainer.className = 'pagination-buttons';
 
   const createAndSetupButton = (label = '', cls = '', disabled = false, handleClick) => {
     const buttonElement = document.createElement('button');
@@ -130,7 +177,12 @@ function PaginationButton(totalPages, maxPagesVisible = 10, currentPage = 1) {
   });
 
   buttons.set(
-    createAndSetupButton('100', 'end-page', disabled.end(), () => (currentPage = totalPages)),
+    createAndSetupButton(
+      `${totalPage ? (document.body.classList.contains('home') ? 500 : totalPage - 1) : 500}`,
+      'end-page',
+      disabled.end(),
+      () => (currentPage = totalPages),
+    ),
     btn => (btn.disabled = disabled.end()),
   );
   buttons.set(
@@ -138,12 +190,12 @@ function PaginationButton(totalPages, maxPagesVisible = 10, currentPage = 1) {
     btn => (btn.disabled = disabled.next()),
   );
 
-  buttons.forEach((_, btn) => paginationWrapper.appendChild(btn));
-  // paginationWrapper.appendChild(frag);
+  buttons.forEach((_, btn) => frag.appendChild(btn));
+  paginationButtonContainer.appendChild(frag);
 
-  // this.render = (container = document.body) => {
-  //   container.appendChild(paginationWrapper);
-  // };
+  this.render = (container = document.body) => {
+    container.appendChild(paginationButtonContainer);
+  };
 
   this.update = (newPageNumber = currentPage) => {
     currentPage = newPageNumber;
@@ -156,20 +208,33 @@ function PaginationButton(totalPages, maxPagesVisible = 10, currentPage = 1) {
   };
 }
 
-const upDateMovie = page => {
-  trendMovieContainer.innerHTML = '';
-  api.fetchMovies(page).then(r => {
-    const { total_pages, results } = r;
-    movieTemplate(results).then(result =>
-      trendMovieContainer.insertAdjacentHTML('beforeend', result)
-    );
-    totalPage = total_pages;
-  });
+const upDateMovie = (page, query) => {
+  if (document.body.classList.contains('search')) {
+    return api.fetchMoviesByQuery(page, query).then(({ results, total_pages }) => {
+      if (results.length > 0) {
+        trendMovieContainer.innerHTML = '';
+      }
+      totalPage = total_pages - 1;
+      movieTemplate(results).then(result =>
+        trendMovieContainer.insertAdjacentHTML('beforeend', result),
+      );
+      return { results, total_pages };
+    });
+  }
+  if (document.body.classList.contains('home')) {
+    trendMovieContainer.innerHTML = '';
+    api.fetchMovies(page).then(({ total_pages, results }) => {
+      movieTemplate(results).then(result =>
+        trendMovieContainer.insertAdjacentHTML('beforeend', result),
+      );
+      totalPage = total_pages;
+    });
+  }
 };
-// upDateMovie();
+upDateMovie();
 
 const paginationButtons = new PaginationButton(totalPage, 7);
-
+paginationButtons.render(movieContainer);
 paginationButtons.onChange(e => {
   if (e.target.value === page) {
     return;
@@ -177,20 +242,20 @@ paginationButtons.onChange(e => {
   page = e.target.value;
   upDateMovie(e.target.value);
 });
-
-//запрос за жанрами
 const movieTemplate = movies => {
   return genres.then(r => {
-    return movies.map(movie => {
-      if (movie.release_date === undefined) {
-        movie.release_date = '';
-      }
-      movie.release_date = movie.release_date.slice(0, 4);
-      movie.genre_ids = movie.genre_ids.map(genre => (genre = r[genre]));
-      if (movie.genre_ids.length > 3) {
-        movie.genre_ids = [movie.genre_ids[0], movie.genre_ids[1], movie.genre_ids[2], '...'];
-      }
-      return moviesTpl(movie);
-    });
+    return movies
+      .map(movie => {
+        if (movie.release_date === undefined) {
+          movie.release_date = '';
+        }
+        movie.release_date = movie.release_date.slice(0, 4);
+        movie.genre_ids = movie.genre_ids.map(genre => (genre = r[genre]));
+        if (movie.genre_ids.length > 3) {
+          movie.genre_ids = [movie.genre_ids[0], movie.genre_ids[1], movie.genre_ids[2], '...'];
+        }
+        return moviesTpl(movie);
+      })
+      .join('');
   });
 };
