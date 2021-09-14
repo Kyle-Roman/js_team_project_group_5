@@ -30,7 +30,7 @@ function fetchTrendingMovies(e) {
             release_date: release_date ? release_date.slice(0, 4) : 'Date unknown',
             title: `${title.slice(0, 50)} ...`,
             posterURL:
-              'https://cdn.pixabay.com/photo/2021/08/16/05/31/film-projector-6549355_1280.jpg',
+              'https://martialartsplusinc.com/wp-content/uploads/2017/04/default-image.jpg',
             genres: genresNamed,
           };
         }
