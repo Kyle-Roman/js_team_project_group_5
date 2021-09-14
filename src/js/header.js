@@ -1,7 +1,6 @@
-import Initialize from './init';
+import Initialize from './pagination';
 import getWatched from './library/watched-movie';
 import getQueued from './library/queued-movie';
-
 const refs = {
   homeLink: document.querySelector('#home'),
   myLibraryLink: document.querySelector('#my-library'),
@@ -12,6 +11,7 @@ const refs = {
   queueBtn: document.querySelector('#btn-queue'),
   clearBtn: document.querySelector('#clear-container'),
   loadMoreBtn: document.querySelector('.load-more-container'),
+  paginationContainer: document.querySelector('.pagination-buttons'),
 };
 
 refs.myLibraryLink.addEventListener('click', onLibraryClick);
@@ -25,6 +25,7 @@ function onLibraryClick() {
 
   refs.searchForm.classList.add('visually-hidden');
   refs.btnContainer.classList.remove('visually-hidden');
+  refs.paginationContainer.classList.add('visually-hidden');
   // refs.clearBtn.classList.remove('visually-hidden');
   refs.loadMoreBtn.classList.add('visually-hidden');
 
@@ -41,7 +42,10 @@ function onHomeClick() {
   refs.searchForm.classList.remove('visually-hidden');
   refs.btnContainer.classList.add('visually-hidden');
   refs.loadMoreBtn.classList.remove('visually-hidden');
-  // refs.clearBtn.classList.add('visually-hidden');
+  Initialize();
+  if (refs.paginationContainer.classList.contains('visually-hidden')) {
+    refs.paginationContainer.classList.remove('visually-hidden');
+  }
 
   refs.gallery.innerHTML = '';
 

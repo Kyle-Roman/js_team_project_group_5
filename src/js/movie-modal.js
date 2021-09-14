@@ -46,8 +46,9 @@ async function getInfoAndRenderMarkup(id) {
 
 async function openModal(ev) {
   ev.preventDefault();
-  if (ev.target.closest('li')) {
-    await getInfoAndRenderMarkup(ev.target.closest('li').dataset.id);
+  console.log(ev.target.nodeName);
+  if (ev.target.nodeName === 'IMG') {
+    await getInfoAndRenderMarkup(ev.target.dataset.id);
     refs.modal.classList.add('show');
     modalContent.classList.add('show');
     document.body.classList.add('modal-open');

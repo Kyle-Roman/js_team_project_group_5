@@ -259,3 +259,4 @@ const movieTemplate = movies => {
       .join('');
   });
 };
+export default upDateMovie;
