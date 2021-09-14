@@ -5,7 +5,7 @@ const Toast = Swal.mixin({
   position: 'top',
   width: '24rem',
   showConfirmButton: false,
-  timer: 3000,
+  timer: 1200,
   timerProgressBar: true,
   didOpen: toast => {
     toast.addEventListener('click', Swal.close);
@@ -13,7 +13,7 @@ const Toast = Swal.mixin({
 });
 
 export default class Notification {
-  constructor() {}
+  constructor() { }
 
   emptyQuery() {
     Toast.fire({
