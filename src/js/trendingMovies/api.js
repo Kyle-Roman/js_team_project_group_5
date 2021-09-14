@@ -1,3 +1,4 @@
+//const Handlebars = require('Handlebars');
 const API_KEY = '838a1c7309b989baab596bfe84b6d2d8';
 const BASE_URL = 'https://api.themoviedb.org/3';
 export default class MoviesApiService {
@@ -13,23 +14,7 @@ export default class MoviesApiService {
       page: this.page,
     });
 
-    const url = `${BASE_URL}/trending/movie/day?api_key=${API_KEY}&language=en-US&page=${page}`;
-
-    return fetch(url)
-      .then(r => r.json())
-      .then(data => {
-        // this.incrementPage();
-
-        data.results.forEach(function (element) {
-          const release_date = element['release_date'].slice(0, 4);
-          return release_date;
-        });
-
-        return data;
-      });
-  }
-  fetchMoviesByQuery(page = 1, query) {
-    const url = `${BASE_URL}/search/movie?api_key=${API_KEY}&language=en-US&query=${query}&page=${page}&include_adult=false`;
+    const url = `${BASE_URL}/trending/movie/${this.period}?api_key=${API_KEY}&language=en-US&page=${page}`;
 
     return fetch(url)
       .then(r => r.json())
