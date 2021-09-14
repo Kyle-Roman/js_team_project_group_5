@@ -13,14 +13,13 @@
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   overflow: auto;
-  transition: all 1s linear;
+  transition: all 0.5s linear;
 }
 
 .show {
   opacity: 1;
   visibility: visible;
   pointer-events: all;
-  transition: all 0.5s linear;
 }
 
 .modal_content {
@@ -33,9 +32,6 @@
   overflow: auto;
   border-radius: 5px;
   color: #010101;
-  animation-duration: 500ms;
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
-    0px 2px 1px rgba(0, 0, 0, 0.2);
   @media screen and (min-width: 768px) {
     padding: 40px 30px;
     display: flex;
