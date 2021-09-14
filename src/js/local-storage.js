@@ -51,6 +51,7 @@ function myLibrarySet(e) {
     } else {
       removeFromLocalStorage(watchedSet, 'watched', movieId);
       modalButton.textContent = 'add to watched';
+      notify.successfullyRemovedFromWatched();
     }
   } else if (modalButton.id === 'queue-button') {
     if (!queuedSet.includes(movieId)) {
@@ -60,6 +61,7 @@ function myLibrarySet(e) {
     } else {
       removeFromLocalStorage(queuedSet, 'queued', movieId);
       modalButton.textContent = 'add to queue';
+      notify.successfullyRemovedFromQueue();
     }
   }
 }
