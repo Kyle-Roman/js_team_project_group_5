@@ -64,6 +64,24 @@ export default class Notification {
     });
   }
 
+  successfullyRemovedFromWatched() {
+    Toast.fire({
+      icon: 'success',
+      title: 'Successfully removed from watched',
+
+      background: '#f7f7f7',
+    });
+  }
+
+  successfullyRemovedFromQueue() {
+    Toast.fire({
+      icon: 'success',
+      title: 'Successfully removed from queue',
+
+      background: '#f7f7f7',
+    });
+  }
+
   alreadyWatched() {
     Toast.fire({
       icon: 'info',
