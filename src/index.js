@@ -1,10 +1,10 @@
 history.scrollRestoration = 'manual';
 
-import ApiService from './js/api-service'
+import ApiService from './js/api-service';
 
-const apiService = new ApiService()
+const apiService = new ApiService();
 
-export default apiService
+export default apiService;
 
 $(window).on('beforeunload', function () {
   $(window).scrollTop(0);
@@ -22,5 +22,4 @@ import './js/theme-switcher/theme-switcher';
 import './js/movie-modal';
 
 import './sass/main.scss';
-import './js/load-more';
 import './js/header';

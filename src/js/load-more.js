@@ -1,16 +1,36 @@
-import ApiService from './api-service';
-// import getTrending from './trending-re';
-import * as searchMovies from './search-trending';
+export default class LoadMoreBtn {
+  constructor({ selector, hidden = false }) {
+    this.refs = this.getRefs(selector);
 
-// console.log(ApiService);
+    hidden && this.hide();
+  }
 
-const apiService = new ApiService();
+  getRefs(selector) {
+    const refs = {};
+    refs.button = document.querySelector(selector);
+    refs.label = refs.button.querySelector('.label');
+    refs.spinner = refs.button.querySelector('.spinner');
 
-const loadMoreBtn = document.querySelector('#load-more-button');
-// console.log(loadMoreBtn);
-loadMoreBtn.addEventListener('click', onClick);
+    return refs;
+  }
 
-async function onClick() {
-  apiService.incrementPage();
-  searchMovies.getTrending('day');
+  enable() {
+    this.refs.button.disabled = false;
+    this.refs.label.textContent = 'Load More';
+    this.refs.spinner.classList.add('is-hidden');
+  }
+
+  disable() {
+    this.refs.button.disabled = true;
+    this.refs.label.textContent = 'Loading...';
+    this.refs.spinner.classList.remove('is-hidden');
+  }
+
+  show() {
+    this.refs.button.classList.remove('visually-hidden');
+  }
+
+  hide() {
+    this.refs.button.classList.add('visually-hidden');
+  }
 }
