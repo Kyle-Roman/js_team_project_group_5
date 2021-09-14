@@ -1,6 +1,7 @@
 import Initialize from './init';
 import getWatched from './library/watched-movie';
 import getQueued from './library/queued-movie';
+import { navigate } from './init';
 
 const refs = {
   homeLink: document.querySelector('#home'),
@@ -35,6 +36,8 @@ function onLibraryClick() {
   refs.pageHeader.classList.add('header-library');
 
   getWatched();
+  navigate.location = 'library';
+  console.log(navigate.location);
 }
 
 function onHomeClick() {
@@ -51,6 +54,8 @@ function onHomeClick() {
   refs.gallery.innerHTML = '';
 
   Initialize();
+  navigate.location = 'home';
+  console.log(navigate.location);
 }
 
 function onQueueBtnClick() {

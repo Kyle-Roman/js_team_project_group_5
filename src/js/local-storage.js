@@ -1,6 +1,9 @@
 import MovieApiService from './api-service';
 import Notification from './notifications';
 import modalCard from '../templates/modal-markup.hbs';
+import getWatched from './library/watched-movie';
+import getQueued from './library/queued-movie';
+import { navigate } from './init';
 
 const apiService = new MovieApiService();
 const notify = new Notification();
@@ -52,6 +55,9 @@ function myLibrarySet(e) {
       removeFromLocalStorage(watchedSet, 'watched', movieId);
       modalButton.textContent = 'add to watched';
       notify.successfullyRemovedFromWatched();
+      if (navigate.location === 'library') {
+        getWatched();
+      }
     }
   } else if (modalButton.id === 'queue-button') {
     if (!queuedSet.includes(movieId)) {
@@ -62,6 +68,9 @@ function myLibrarySet(e) {
       removeFromLocalStorage(queuedSet, 'queued', movieId);
       modalButton.textContent = 'add to queue';
       notify.successfullyRemovedFromQueue();
+      if (navigate.location === 'library') {
+        getQueued();
+      }
     }
   }
 }
