@@ -27,7 +27,6 @@ function onLibraryClick() {
 
   refs.searchForm.classList.add('visually-hidden');
   refs.btnContainer.classList.remove('visually-hidden');
-  // refs.clearBtn.classList.remove('visually-hidden');
   refs.loadMoreBtn.classList.add('visually-hidden');
 
   refs.queueBtn.classList.remove('active');
@@ -37,7 +36,6 @@ function onLibraryClick() {
 
   getWatched();
   navigate.location = 'library';
-  console.log(navigate.location);
 }
 
 function onHomeClick() {
@@ -49,13 +47,11 @@ function onHomeClick() {
   refs.searchForm.classList.remove('visually-hidden');
   refs.btnContainer.classList.add('visually-hidden');
   refs.loadMoreBtn.classList.remove('visually-hidden');
-  // refs.clearBtn.classList.add('visually-hidden');
 
   refs.gallery.innerHTML = '';
 
   Initialize();
   navigate.location = 'home';
-  console.log(navigate.location);
 }
 
 function onQueueBtnClick() {

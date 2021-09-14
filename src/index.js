@@ -1,8 +1,10 @@
 history.scrollRestoration = 'manual';
 
 import ApiService from './js/api-service';
+import Initialize from './js/init';
 
 const apiService = new ApiService();
+Initialize();
 
 export default apiService;
 

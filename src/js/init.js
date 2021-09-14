@@ -25,6 +25,5 @@ class Locator {
 }
 
 const navigate = new Locator();
-Initialize();
 
 export { navigate };
