@@ -23,7 +23,7 @@ async function getInfoAndRenderMarkup(id) {
   } catch {
     return console.error();
   }
-}
+};
 
 async function openModal(ev) {
   ev.preventDefault();
@@ -34,28 +34,26 @@ async function openModal(ev) {
     close.addEventListener('click', closeModalWindow);
   }
   return;
-}
+};
 
 function closeModalWindow(ev) {
   modalToggle();
   close.removeEventListener('click', closeModalWindow);
-}
+};
 
 function modalToggle() {
   refs.modal.classList.toggle('visually-hidden');
   document.body.classList.toggle('modal-open');
-}
+};
 
 function closeModalWindowOnEsc(ev) {
   if (ev.code === 'Escape') {
     closeModalWindow();
   }
-}
+};
 
 function onWindowClick(ev) {
   if (ev.target == refs.modal) {
     closeModalWindow();
   }
-}
-// -----------Local Storage----------------
-
+};

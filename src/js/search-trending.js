@@ -1,4 +1,5 @@
-import MovieApiService from './api-service';
+// import MovieApiService from './api-service';
+import apiService from '..';
 import Notification from './notifications';
 import movieCardTpl from '../templates/movie-card.hbs';
 import render from './render';
@@ -11,7 +12,7 @@ const loadMoreBtn = document.querySelector('#load-more-button');
 formRef.addEventListener('submit', onSubmit);
 loadMoreBtn.addEventListener('click', onLoadMoreBtnClick);
 
-const apiService = new MovieApiService();
+// const apiService = new MovieApiService();
 const notify = new Notification();
 
 async function onLoadMoreBtnClick() {

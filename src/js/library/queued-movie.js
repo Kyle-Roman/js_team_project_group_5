@@ -14,21 +14,21 @@ const apiService = new ApiService();
 
 const libraryBtn = document.getElementById('my-library');
 
-libraryBtn.addEventListener('click', onBtnLibraryClick);
+// libraryBtn.addEventListener('click', onBtnLibraryClick);
 
-function onBtnLibraryClick(e) {
-  e.preventDefault();
-  getMovieById();
-}
+// function onBtnLibraryClick(e) {
+//   e.preventDefault();
+//   getQueued();
+// }
 
-function getMovieById() {
+export default function getQueued() {
   const watchedMovieListId = JSON.parse(localStorage.getItem('queued'));
   clearGallery();
 
   const infoM = watchedMovieListId.forEach(function fetchMovieById2(id) {
     fetch(`${BASE_URL}/movie/${id}?api_key=${API_KEY}`).then(r =>
       r.json().then(movieInfo => {
-        console.log(movieInfo);
+        // console.log(movieInfo);
 
         // console.log(
         //   movieInfo.id,
