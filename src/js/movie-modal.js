@@ -5,7 +5,7 @@ import refs from './refs';
 
 const apiService = new ApiService();
 
-// const modalContent = document.querySelector('.modal_content');
+const modalContent = document.querySelector('.modal_content');
 const filmField = document.querySelector('#film-info');
 const close = document.querySelector('.close_modal_window');
 
@@ -30,6 +30,7 @@ async function openModal(ev) {
   if (ev.target.closest('li')) {
     await getInfoAndRenderMarkup(ev.target.closest('li').dataset.id);
     refs.modal.classList.add('show');
+    modalContent.classList.add('show');
     document.body.classList.add('modal-open');
     close.addEventListener('click', closeModalWindow);
   }
@@ -38,6 +39,7 @@ async function openModal(ev) {
 
 function closeModalWindow(ev) {
   refs.modal.classList.remove('show');
+  modalContent.classList.remove('show');
   document.body.classList.remove('modal-open');
   close.removeEventListener('click', closeModalWindow);
 }
