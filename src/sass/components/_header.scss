@@ -4,40 +4,68 @@ $secondary-color: #000000;
 $accent-color: #ff6b01;
 
 .header {
-  background-image: url('../images/mobile/rectangle@1x.jpg');
+  // background-image: url('../images/mobile/rectangle@1x.jpg');
   background-position: center;
   margin: 0 auto;
   padding-bottom: 98px;
   padding-top: 58px;
 }
 
-@media (min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
-  .header {
+.header-home {
+  background-image: url('../images/mobile/rectangle@1x.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  @media (min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
     background-image: url('../images/mobile/rectangle@2x.jpg');
   }
-}
 
-@media (min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
-  .header {
+  @media (min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
     background-image: url('../images/tablet/rectangle@2x.jpg');
   }
-}
 
-@media screen and (min-width: 768px) {
-  .header {
+  @media screen and (min-width: 768px) {
     background-image: url('../images/tablet/rectangle@1x.jpg');
   }
-}
-
-@media (min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
-  .header {
+  @media (min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
     background-image: url('../images/desktop/rectangle@2x.jpg');
+  }
+
+  @media screen and (min-width: 1024px) {
+    background-image: url('../images/desktop/rectangle@1x.jpg');
   }
 }
 
-@media screen and (min-width: 1024px) {
-  .header {
-    background-image: url('../images/desktop/rectangle@1x.jpg');
+.header-library {
+  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url('../images/mobile/rectangle2@1x.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 230px;
+
+  @media (min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
+    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+      url('../images/mobile/rectangle2@2x.jpg');
+  }
+
+  @media (min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
+    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+      url('../images/mobile/rectangle2@2x.jpg');
+  }
+
+  @media screen and (min-width: 768px) {
+    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+      url('../images/mobile/rectangle2@1x.jpg');
+  }
+  @media (min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
+    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+      url('../images/mobile/rectangle2@2x.jpg');
+  }
+
+  @media screen and (min-width: 1024px) {
+    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+      url('../images/desktop/rectangle2@1x.jpg');
   }
 }
 
@@ -262,35 +290,35 @@ $accent-color: #ff6b01;
   border-color: $accent-color;
 }
 
-.header-library {
-  height: 230px;
-  min-width: 320px;
-  max-width: 320px;
-  background-image: url('../images/mobile/rectangle@1x.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  margin: 0 auto;
+// .header-library {
+//   height: 230px;
+//   min-width: 320px;
+//   max-width: 320px;
+//   background-image: url('../images/mobile/rectangle@1x.jpg');
+//   background-repeat: no-repeat;
+//   background-size: cover;
+//   background-position: center;
+//   margin: 0 auto;
 
-  @media (min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
-    background-image: url('../images/mobile/rectangle@2x.jpg');
-  }
+//   @media (min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
+//     background-image: url('../images/mobile/rectangle@2x.jpg');
+//   }
 
-  @media screen and (min-width: 768px) {
-    max-width: 768px;
-    background-image: url('../images/tablet/rectangle@1x.jpg');
+//   @media screen and (min-width: 768px) {
+//     max-width: 768px;
+//     background-image: url('../images/tablet/rectangle@1x.jpg');
 
-    @media (min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
-      background-image: url('../images/tablet/rectangle@2x.jpg');
-    }
-  }
+//     @media (min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
+//       background-image: url('../images/tablet/rectangle@2x.jpg');
+//     }
+//   }
 
-  @media screen and (min-width: 1024px) {
-    max-width: 1024px;
-    background-image: url('../images/desktop/rectangle@1x.jpg');
+//   @media screen and (min-width: 1024px) {
+//     max-width: 1024px;
+//     background-image: url('../images/desktop/rectangle@1x.jpg');
 
-    @media (min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
-      background-image: url('../images/desktop/rectangle@2x.jpg');
-    }
-  }
-}
+//     @media (min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) {
+//       background-image: url('../images/desktop/rectangle@2x.jpg');
+//     }
+//   }
+// }
