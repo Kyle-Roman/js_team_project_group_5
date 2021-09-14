@@ -1,6 +1,7 @@
 import Initialize from './init';
 import getWatched from './library/watched-movie';
 import getQueued from './library/queued-movie';
+import { navigate } from './init';
 
 const refs = {
   homeLink: document.querySelector('#home'),
@@ -26,7 +27,6 @@ function onLibraryClick() {
 
   refs.searchForm.classList.add('visually-hidden');
   refs.btnContainer.classList.remove('visually-hidden');
-  // refs.clearBtn.classList.remove('visually-hidden');
   refs.loadMoreBtn.classList.add('visually-hidden');
 
   refs.queueBtn.classList.remove('active');
@@ -35,6 +35,7 @@ function onLibraryClick() {
   refs.pageHeader.classList.add('header-library');
 
   getWatched();
+  navigate.location = 'library';
 }
 
 function onHomeClick() {
@@ -46,11 +47,11 @@ function onHomeClick() {
   refs.searchForm.classList.remove('visually-hidden');
   refs.btnContainer.classList.add('visually-hidden');
   refs.loadMoreBtn.classList.remove('visually-hidden');
-  // refs.clearBtn.classList.add('visually-hidden');
 
   refs.gallery.innerHTML = '';
 
   Initialize();
+  navigate.location = 'home';
 }
 
 function onQueueBtnClick() {

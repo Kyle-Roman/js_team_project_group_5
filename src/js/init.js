@@ -10,4 +10,20 @@ export default async function Initialize() {
   showTrendingMovies(trending);
 }
 
-Initialize();
+class Locator {
+  constructor() {
+    this.location = 'home';
+  }
+
+  get location() {
+    return this._location;
+  }
+
+  set location(newLocation) {
+    this._location = newLocation;
+  }
+}
+
+const navigate = new Locator();
+
+export { navigate };
