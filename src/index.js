@@ -17,7 +17,7 @@ import './js/local-storage';
 import './js/loader';
 import './js/notifications';
 import './js/init';
-import './js/pagination';
+// import './js/pagination';
 import './js/theme-switcher/theme-switcher';
 import './js/movie-modal';
 
