@@ -16,12 +16,10 @@ import './js/team-modal';
 import './js/local-storage';
 import './js/loader';
 import './js/notifications';
-// import './js/trending-re';
 import './js/init';
-import './js/pagination';
+// import './js/pagination';
 import './js/theme-switcher/theme-switcher';
 import './js/movie-modal';
 
 import './sass/main.scss';
-// import './js/load-more';
 import './js/header';
