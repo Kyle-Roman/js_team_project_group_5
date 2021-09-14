@@ -35,6 +35,16 @@ export default class Notification {
     });
   }
 
+  nothingToShow() {
+    Toast.fire({
+      icon: 'info',
+      iconColor: '#fff',
+      title: `<p style="color:white">Sorry, that's all :(<p>`,
+
+      background: '#ff6b01',
+    });
+  }
+
   serverError() {
     Toast.fire({
       icon: 'error',
