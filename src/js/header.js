@@ -12,6 +12,7 @@ const refs = {
   queueBtn: document.querySelector('#btn-queue'),
   clearBtn: document.querySelector('#clear-container'),
   loadMoreBtn: document.querySelector('.load-more-container'),
+  pageHeader: document.querySelector('.header'),
 };
 
 refs.myLibraryLink.addEventListener('click', onLibraryClick);
@@ -30,6 +31,8 @@ function onLibraryClick() {
 
   refs.queueBtn.classList.remove('active');
   refs.watchedBtn.classList.add('active');
+  refs.pageHeader.classList.remove('header-home');
+  refs.pageHeader.classList.add('header-library');
 
   getWatched();
 }
@@ -37,6 +40,8 @@ function onLibraryClick() {
 function onHomeClick() {
   refs.myLibraryLink.classList.remove('current');
   refs.homeLink.classList.add('current');
+  refs.pageHeader.classList.remove('header-library');
+  refs.pageHeader.classList.add('header-home');
 
   refs.searchForm.classList.remove('visually-hidden');
   refs.btnContainer.classList.add('visually-hidden');

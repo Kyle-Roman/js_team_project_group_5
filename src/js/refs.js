@@ -8,6 +8,7 @@ const refs = {
   footerTextTeam: document.querySelector('.team__modal'),
   modal: document.getElementById('myModal'),
   galleryList: document.getElementById('gallery'),
+  pageHeader: document.querySelector('.header'),
 };
 
 export default refs;
