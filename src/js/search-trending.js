@@ -18,54 +18,31 @@ const loadMoreBtn = new LoadMoreBtn({
 
 loadMoreBtn.refs.button.addEventListener('click', onLoadMoreBtnClick);
 
-async function onLoadMoreBtnClick() {
-  loadMoreBtn.disable();
-
-  if (apiService.searchQuery === '') {
-    const trending = await getTrending('day');
-    showTrendingMovies(trending);
-    loadMoreBtn.enable();
-
-    return;
-  }
-
-  const found = await searchMovies(apiService.searchQuery);
-  if (found.results.length < 1) {
-    notify.nothingToShow();
-    loadMoreBtn.enable();
-    // loadMoreBtn.hide();
-    loadMoreBtn.refs.button.disable;
-
-    return;
-  }
-  showFoundMovies(found);
-  loadMoreBtn.enable();
-}
-
 async function onSearchFormSubmit(event) {
   event.preventDefault();
+
+  if (!event.currentTarget.elements.search.value) {
+    return notify.emptyQuery();
+  }
+
   apiService.resetPage();
 
   try {
     const movies = await searchMovies(event.currentTarget.elements.search.value);
     if (!movies.results.length) {
       notify.notFound();
+      apiService.searchQuery = '';
       return;
     }
 
     document.querySelector('#gallery').innerHTML = '';
-    // render('#gallery', movieCardTpl, movies);
-    showFoundMovies(movies);
+    showMovies(movies);
   } catch (e) {
     console.log(e);
   }
 }
 
 async function searchMovies(searchQuery) {
-  if (searchQuery === '') {
-    return notify.emptyQuery();
-  }
-
   apiService.searchQuery = searchQuery;
 
   try {
@@ -76,18 +53,32 @@ async function searchMovies(searchQuery) {
   }
 }
 
-function showFoundMovies(movies) {
-  render('#gallery', movieCardTpl, movies);
-  loadMoreBtn.show();
-}
+async function onLoadMoreBtnClick() {
+  loadMoreBtn.disable();
 
-function showTrendingMovies(movies) {
-  render('#gallery', movieCardTpl, movies);
-  loadMoreBtn.show();
+  if (apiService.searchQuery === '') {
+    const trending = await getTrending('day');
+    showMovies(trending);
+    loadMoreBtn.enable();
+
+    return;
+  }
+
+  const found = await searchMovies(apiService.searchQuery);
+  if (found.results.length < 1) {
+    notify.nothingToShow();
+    loadMoreBtn.enable();
+    loadMoreBtn.refs.button.disable;
+
+    return;
+  }
+  showMovies(found);
+  loadMoreBtn.enable();
 }
 
 async function getTrending(period) {
   apiService.period = period;
+  apiService.searchQuery = '';
 
   try {
     return await apiService.fetchTrending();
@@ -96,4 +87,9 @@ async function getTrending(period) {
   }
 }
 
-export { getTrending, searchMovies, showTrendingMovies };
+function showMovies(movies) {
+  render('#gallery', movieCardTpl, movies);
+  loadMoreBtn.show();
+}
+
+export { getTrending, searchMovies, showMovies };

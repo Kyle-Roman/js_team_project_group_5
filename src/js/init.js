@@ -1,4 +1,4 @@
-import { getTrending, showTrendingMovies } from './search-trending';
+import { getTrending, showMovies } from './search-trending';
 import setBaseConfig from './local-storage';
 import apiService from '..';
 
@@ -7,7 +7,7 @@ export default async function Initialize() {
 
   apiService.resetPage();
   const trending = await getTrending('day');
-  showTrendingMovies(trending);
+  showMovies(trending);
 }
 
 class Locator {
