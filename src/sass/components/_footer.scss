@@ -49,7 +49,7 @@ footer {
 }
 
 .developers {
-  position: relative;
+  // position: relative;
   margin: 0;
   display: flex;
   justify-content: center;
@@ -84,44 +84,13 @@ footer {
     pointer-events: none;
   }
 }
-// .teamModalBtnClose {
-//   font-size: 30px;
-//   margin-top: 10px;
-//   margin-right: 10px;
-//   position: absolute;
-//   right: 0;
-//   top: 0;
-//   &:hover {
-//     color: orange;
-//   }
-// }
-.team_list {
-  //   justify-content: space-between;
-  //   padding: 30px;
-  //   &-teammate_info {
-  //     background-color: rgb(225, 225, 233);
-  //     border-radius: 25px;
-  //     box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.2), 0px 1px 1px rgba(0, 0, 0, 0.14),
-  //       0px 1px 3px rgba(0, 0, 0, 0.12);
-  //     height: 100%;
-  //     padding-bottom: 30px;
-  //     transition: 0.8s;
 
-  //     &:hover {
-  //       box-shadow: 0 0 20px rgba(250, 119, 12, 0.897);
-  //       transform: scale(1.03);
-  //     }
-  //   }
-  //   &-img {
-  //     margin: 0 auto;
-  //     margin-bottom: 20px;
-  //     border-radius: 50%;
-  //   }
-  // }
+.team_list {
   @media screen and (max-width: 767px) {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
+    // display: flex;
+    // flex-wrap: wrap;
+    // justify-content: space-between;
+    width: calc(100% / 2);
   }
   @media screen and (min-width: 768px) {
     display: flex;
@@ -132,15 +101,36 @@ footer {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
+    width: calc(100% / 4)-30px;
     padding-top: 30px;
     padding-bottom: 30px;
   }
 }
 
 .team-card-list-img {
-  margin: 0 auto;
-  margin-bottom: 20px;
-  border-radius: 50%;
+  @media screen and (max-width: 767px) {
+    align-items: center;
+    margin: 0 auto;
+    width: 70px;
+    height: 70px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    border-radius: 50%;
+  }
+  @media screen and (min-width: 768px) {
+    width: 110px;
+    height: 110px;
+    margin-top: 10px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    align-items: center;
+    margin: 0 auto;
+    width: 150px;
+    height: 150px;
+    margin-bottom: 10px;
+    border-radius: 50%;
+  }
 }
 
 .teamModalContainer {
@@ -150,9 +140,12 @@ footer {
   left: 50%;
   transform: translate(-50%);
   border-radius: 10px;
-  @media screen and (max-width: 767px) {
-    bottom: 100px;
-  }
+  margin-right: 0px;
+  padding-right: 0px;
+
+  // @media screen and (max-width: 767px) {
+  //   width: 300px;
+  // }
 }
 .teammate_name {
   color: black;
@@ -160,7 +153,6 @@ footer {
 }
 .teammate_job {
   color: orange;
-  //   font-style: bold;
   font-weight: 400;
 }
 .teammate_info {
