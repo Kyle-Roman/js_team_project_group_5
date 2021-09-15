@@ -118,7 +118,21 @@
         font-size: 90%;
     }
 
+    .light-theme__modal-button {
+        color: $priority-text-color;
+
+        border: 1px solid $priority-text-color;
+    }
+
+    .dark-theme__modal-button {
+        color: $secondary-text-color;
+
+        border: 1px solid $secondary-text-color;
+    }
+
+    .dark-theme__switcher {
     .light {
+
         color: $secondary-text-color;
         //opacity: 0.5;
         font-size: 90%;
