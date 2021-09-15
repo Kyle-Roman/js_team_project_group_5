@@ -114,6 +114,18 @@
         transition: background-color 0.5s;
     }
 
+    .light-theme__modal-button {
+        color: $priority-text-color;
+
+        border: 1px solid $priority-text-color;
+    }
+
+    .dark-theme__modal-button {
+        color: $secondary-text-color;
+
+        border: 1px solid $secondary-text-color;
+    }
+
     .dark-theme__switcher {
         color: $secondary-text-color;
 
