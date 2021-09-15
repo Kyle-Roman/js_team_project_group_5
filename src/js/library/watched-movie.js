@@ -10,7 +10,7 @@ export default function getWatched() {
 
   const watchedMovieListId = JSON.parse(localStorage.getItem('watched'));
 
-  if (watchedMovieListId === null) {
+  if (watchedMovieListId === null || localStorage.getItem('watched') === '[]') {
     refs.gallery.innerHTML = '<p class="info-text__library">Your library is empty.</p>';
   } else {
     watchedMovieListId.forEach(function fetchMovieById2(id) {
