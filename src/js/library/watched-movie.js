@@ -11,7 +11,19 @@ export default function getWatched() {
   const watchedMovieListId = JSON.parse(localStorage.getItem('watched'));
 
   if (watchedMovieListId === null || localStorage.getItem('watched') === '[]') {
-    refs.gallery.innerHTML = '<p class="info-text__library">Your library is empty.</p>';
+    refs.gallery.innerHTML = ` <div class="container-empty" id="block">
+         <p class="info-text__library"> Your library is empty.</p>
+      </div>
+         `;
+
+    var div = document.createElement('div');
+    var image = document.createElement('img');
+    image.setAttribute(
+      'src',
+      'https://cdn.pixabay.com/photo/2012/11/05/07/39/projector-64149_1280.jpg',
+    );
+    div.appendChild(image);
+    document.getElementById('block').appendChild(div);
   } else {
     watchedMovieListId.forEach(function fetchMovieById2(id) {
       fetch(`${BASE_URL}/movie/${id}?api_key=${API_KEY}`).then(r =>
