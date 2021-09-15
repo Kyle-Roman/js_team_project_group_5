@@ -46,12 +46,42 @@ async function getInfoAndRenderMarkup(id) {
 
 async function openModal(ev) {
   ev.preventDefault();
+
   if (ev.target.closest('li')) {
     await getInfoAndRenderMarkup(ev.target.closest('li').dataset.id);
     refs.modal.classList.add('show');
     modalContent.classList.add('show');
     document.body.classList.add('modal-open');
     close.addEventListener('click', closeModalWindow);
+
+    const watchedBtn = document.querySelector('.watched-button');
+    const queueBtn = document.querySelector('.queue-button');
+
+    console.log(watchedBtn, queueBtn);
+
+    /* theme switcher  */
+    if (localStorage.getItem('Theme') === null) {
+      watchedBtn.classList.add('light-theme__modal-button');
+      queueBtn.classList.add('light-theme__modal-button');
+    }
+
+    if (localStorage.getItem('Theme') === 'DARK') {
+      watchedBtn.classList.remove('light-theme__modal-button');
+      queueBtn.classList.remove('light-theme__modal-button');
+
+      watchedBtn.classList.add('dark-theme__modal-button');
+      queueBtn.classList.add('dark-theme__modal-button');
+    }
+
+    if (localStorage.getItem('Theme') === 'LIGHT') {
+      watchedBtn.classList.remove('dark-theme__modal-button');
+      queueBtn.classList.remove('dark-theme__modal-button');
+
+      watchedBtn.classList.add('light-theme__modal-button');
+      queueBtn.classList.add('light-theme__modal-button');
+    }
+
+    /* --------  */
   }
   return;
 }
