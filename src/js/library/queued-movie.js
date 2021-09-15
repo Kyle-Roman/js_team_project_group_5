@@ -9,7 +9,12 @@ export default function getQueued() {
   const watchedMovieListId = JSON.parse(localStorage.getItem('queued'));
   clearGallery();
 
-  if (watchedMovieListId === null) {
+  console.log(localStorage.getItem('queued'));
+
+  if (watchedMovieListId === null || localStorage.getItem('queued') === '[]') {
+    console.log(watchedMovieListId);
+
+    console.log(localStorage.getItem('queued'));
     refs.gallery.innerHTML = '<p class="info-text__library">Your library is empty.</p>';
   } else {
     const infoM = watchedMovieListId.forEach(function fetchMovieById2(id) {
@@ -48,7 +53,7 @@ export default function getQueued() {
             );
           }
 
-          if (movieInfo.genres.length > 3) {
+          if (movieInfo.genres.length >= 3) {
             refs.gallery.insertAdjacentHTML(
               'beforeend',
               `
