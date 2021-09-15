@@ -86,7 +86,7 @@ export default function getWatched() {
                   <div class='card-name__container'>
                     <h2 class='card__name'>${movieInfo.title}</h2>
                   </div>
-                  <p class='card__info'>${movieInfo.genres[0].name}, ${movieInfo.genres[1].name}, Other | ${releaseDate}
+                  <p class='card__info'>${movieInfo.genres[0].name}, ${movieInfo.genres[1].name}, other | ${releaseDate}
                     <span class='card__movie-rating'>${movieInfo.vote_average}</span>
                   </p>
                 </div>
@@ -115,7 +115,7 @@ export default function getWatched() {
                   <div class='card-name__container'>
                     <h2 class='card__name'>${movieInfo.title}</h2>
                   </div>
-                  <p class='card__info'>${movieInfo.genres[0].name}, ${movieInfo.genres[1].name} | ${releaseDate}
+                  <p class='card__info'>${movieInfo.genres[0].name}, other | ${releaseDate}
                     <span class='card__movie-rating'>${movieInfo.vote_average}</span>
                   </p>
                 </div>

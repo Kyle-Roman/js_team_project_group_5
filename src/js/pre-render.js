@@ -16,7 +16,7 @@ export default function prepareData(data, handlerType) {
           vote_average,
           posterURL: poster_path
             ? `${IMAGE_BASE_URL}w500${poster_path}`
-            : 'https://cdn.pixabay.com/photo/2021/08/16/05/31/film-projector-6549355_1280.jpg',
+            : 'https://martialartsplusinc.com/wp-content/uploads/2017/04/default-image.jpg',
           genres:
             genresNamed.length > 2
               ? genresNamed.slice(0, 2).concat('Other').join(', ')
