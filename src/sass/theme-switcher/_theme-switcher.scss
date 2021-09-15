@@ -58,6 +58,7 @@
 
     cursor: pointer;
 }
+
 .toggle {
     position: absolute;
     width: 50%;
@@ -65,6 +66,7 @@
     box-shadow: 0 2px 15px rgba(0, 0, 0, 0.15);
     transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
+
 .names {
     margin-top: 10px;
 
@@ -78,6 +80,7 @@
     justify-content: space-between;
     user-select: none;
 }
+
 .dark {
     margin-left: 27%;
 
@@ -103,6 +106,18 @@
     transition: background-color 0.5s;
 }
 
+.light-theme__modal-button {
+    color: $priority-text-color;
+
+    border: 1px solid $priority-text-color;
+}
+
+.dark-theme__modal-button {
+    color: $secondary-text-color;
+
+    border: 1px solid $secondary-text-color;
+}
+
 .dark-theme__switcher {
     color: $secondary-text-color;
 
@@ -118,36 +133,23 @@
         font-size: 90%;
     }
 
-    .light-theme__modal-button {
-        color: $priority-text-color;
-
-        border: 1px solid $priority-text-color;
-    }
-
-    .dark-theme__modal-button {
-        color: $secondary-text-color;
-
-        border: 1px solid $secondary-text-color;
-    }
-
     .dark-theme__switcher {
-    .light {
+        .light {
+            color: $secondary-text-color;
+            //opacity: 0.5;
+            font-size: 90%;
+        }
 
-        color: $secondary-text-color;
-        //opacity: 0.5;
-        font-size: 90%;
-    }
+        .crescent {
+            transform: scale(1);
+            background: #26242e;
+        }
 
-    .crescent {
-        transform: scale(1);
-        background: #26242e;
-    }
-
-    .main-circle {
-        background: linear-gradient(40deg, #8983f7, #a3dafb 70%);
+        .main-circle {
+            background: linear-gradient(40deg, #8983f7, #a3dafb 70%);
+        }
     }
 }
-
 @media screen and (max-width: 767px) {
     .switcher-label {
         right: -60px;
