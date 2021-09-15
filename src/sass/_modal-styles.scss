@@ -218,6 +218,13 @@
   }
 }
 
+.queue-button {
+  @media screen and (min-width: 1024px) {
+    padding-right: 2px;
+    padding-left: 2px;
+  }
+}
+
 .modal-open {
   height: 100vh;
   overflow-y: hidden;
