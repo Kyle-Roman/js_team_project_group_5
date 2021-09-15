@@ -18,11 +18,13 @@ export default function getWatched() {
 
     var div = document.createElement('div');
     var image = document.createElement('img');
+
     image.setAttribute(
       'src',
       'https://cdn.pixabay.com/photo/2012/11/05/07/39/projector-64149_1280.jpg',
     );
-    div.appendChild(image);
+
+    div.appendChild(image).style.borderRadius = '10px';
     document.getElementById('block').appendChild(div);
   } else {
     watchedMovieListId.forEach(function fetchMovieById2(id) {
